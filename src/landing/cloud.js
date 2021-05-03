@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 
-export default class cloud extends Component {
+export default class Cloud extends Component {
     static initial
     constructor(props) {
         super(props);
         this.state = {
             style: {
-                width: this.props.width,
-                height: this.props.height,
-                right: this.props.x,
-                top: this.props.y,
+                width: this.props.width+'px',
+                height: this.props.height+'px',
+                left: this.props.x+'vw',
+                top: this.props.y+'vh',
+                position: 'relative',
+                backgroundColor: 'white', 
+                boxShadow: '5px 5px 20px'
             }
         }
     }

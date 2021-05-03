@@ -7,7 +7,7 @@ import './index.css';
 ReactDOM.render(
   <div>
     <Landing />
-    <Cloud  />
+    <Cloud x="10" y="10" width="100" height="100" />
   </div>,
   document.getElementById('root')
 );
