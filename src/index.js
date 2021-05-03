@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Landing from './landing/landing';
-import Cloud from './landing/cloud';
+import About from './about/about';
+import Projects from './projects/projects';
+import Courses from './courses/courses';
 import './index.css';
 
 ReactDOM.render(
   <div>
     <Landing />
-    <Cloud x="10" y="10" width="100" height="100" />
+    <About />
+    <Projects />
+    <Courses />
   </div>,
   document.getElementById('root')
 );
