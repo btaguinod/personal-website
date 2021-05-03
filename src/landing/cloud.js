@@ -10,12 +10,11 @@ export default class Cloud extends Component {
                 width: this.props.width+'px',
                 height: this.props.height+'px',
                 left: x +'vw',
-                top: y+'vh',
+                bottom: y+'vh',
             }
         }
     }
     componentDidUpdate(prevProps) {
-        // Typical usage (don't forget to compare props):
         if (this.props !== prevProps) {
             let x = this.props.x-.5*this.props.width/window.innerWidth*100
             let y = this.props.y-.5*this.props.height/window.innerHeight*100
@@ -24,7 +23,7 @@ export default class Cloud extends Component {
                     width: this.props.width+'px',
                     height: this.props.height+'px',
                     left: x+'vw',
-                    top: y+'vh',
+                    bottom: y+'vh',
                 }
             })
         }
