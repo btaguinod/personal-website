@@ -56,6 +56,7 @@ export default class Clouds extends Component {
             // console.log(Clouds.opacity*(1 - Clouds.opacityLayerDiff*layer))
 
             cloudInfoList.push({
+                id: i,
                 layer,
                 width,
                 height,
