@@ -2,7 +2,18 @@
     position: relative;
     width: 100vw;
     height: 100vh;
-    background-color: #02A9F7;
+    /* background-color: #02A9F7; */
+    background: linear-gradient(180deg, #ffff, #02A9F7);
+    background-size: 400% 400%;
+
+    animation: open 2s linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes open {
+    0% {background-position:50% 0%}
+    0% {background-position:50% 25%}
+    100% {background-position:50% 100%}
 }
 
 .cloud {
