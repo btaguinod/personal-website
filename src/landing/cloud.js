@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import _ from 'lodash'
 
 export default class Cloud extends Component {
     static hoverAnimSpeed = 1;
@@ -31,10 +32,7 @@ export default class Cloud extends Component {
             let x = this.props.x-.5*trueWidthPercent*100
             let y = this.props.y-.5*trueHeightpercent*100
 
-            let newState = {
-                offsets:{...this.state.offsets}, 
-                style:{...this.state.style}
-            };
+            let newState = _.cloneDeep(this.state);
             
             newState.style.left = x;
             newState.style.bottom = y;
@@ -47,10 +45,7 @@ export default class Cloud extends Component {
     mouseEnter = e => {
         clearInterval(this.shrinkInterval)
         this.growInterval = setInterval(() => {
-            let newState = {
-                offsets: {...this.state.offsets},
-                style: {...this.state.style}
-            }
+            let newState = _.cloneDeep(this.state);
 
             if (this.state.style.opacity + newState.offsets.opacityOffset >= 1) {
                 clearInterval(this.growInterval)

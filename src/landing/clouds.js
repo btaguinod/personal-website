@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Cloud from './cloud'
 import './landing.css'
+import _ from 'lodash'
 
 export default class Clouds extends Component {
     static initialYOffset = -200;
@@ -27,7 +28,7 @@ export default class Clouds extends Component {
         
         this.stage = 0;
 
-        let cloudInfo = [];
+        let cloudInfoList = [];
 
         for (let i = 0; i < Clouds.totalClouds; i++) {
             let layer = Math.floor(Math.random()*Clouds.layers);
@@ -38,12 +39,12 @@ export default class Clouds extends Component {
             let x = Math.random()*100;
             let y = Math.random()*80 + 10;
 
-            for (let k = 0; k < cloudInfo.length; k++) {
-                let xPercent = cloudInfo[k].x-x;
-                let yPercent = cloudInfo[k].y-y;
+            for (let k = 0; k < cloudInfoList.length; k++) {
+                let xPercent = cloudInfoList[k].x-x;
+                let yPercent = cloudInfoList[k].y-y;
                 let distance = Math.sqrt((xPercent*window.innerWidth*.01)**2+(yPercent*window.innerHeight*.01)**2)
 
-                if (distance < Math.min(width, height, cloudInfo[k].width, cloudInfo[k].height)) {
+                if (distance < Math.min(width, height, cloudInfoList[k].width, cloudInfoList[k].height)) {
                     x = Math.random()*100;
                     y = Math.random()*80 + 10;
 
@@ -54,7 +55,7 @@ export default class Clouds extends Component {
 
             // console.log(Clouds.opacity*(1 - Clouds.opacityLayerDiff*layer))
 
-            cloudInfo.push({
+            cloudInfoList.push({
                 layer,
                 width,
                 height,
@@ -67,7 +68,7 @@ export default class Clouds extends Component {
         }
 
         this.state = {
-            cloudInfo: cloudInfo
+            cloudInfoList: cloudInfoList
         }
 
 
@@ -75,19 +76,19 @@ export default class Clouds extends Component {
 
     mouseEvent = e => {
         
-        console.log(this.state.cloudInfo[0])
+        console.log(this.state.cloudInfoList[0])
     }
 
     openAnimation = () => {
         let timePercent = (Date.now() - this.startAnimDate.getTime())/Clouds.openAnimTime
 
-        let newState = {...this.state};
+        let newState = _.cloneDeep(this.state);
 
         // Linear version
         // let yOffset = (Clouds.initialYOffset)*(1 - timePercent);
 
         let yAnimOffset = ((timePercent - 1)**2)*Clouds.initialYOffset;
-        for (let cloud of newState.cloudInfo) {
+        for (let cloud of newState.cloudInfoList) {
             cloud.yAnimOffset = yAnimOffset*(1 - cloud.layer*Clouds.speedLayerDiff)
         }
         
@@ -95,16 +96,15 @@ export default class Clouds extends Component {
     }
 
     idleAnimation = () => {
-        let newState = {...this.state};
+        let newState = _.cloneDeep(this.state);
 
-        for (let cloud of newState.cloudInfo) {
+        for (let cloud of newState.cloudInfoList) {
             let x = (cloud.x + Clouds.idleSpeed*(1 - cloud.layer*Clouds.speedLayerDiff)*0.01)
             if (x > 100 + 100*cloud.width/(2*window.innerWidth)) {
                 x = -100*cloud.width/(2*window.innerWidth)
             }
             cloud.x = x
         }
-
         this.setState(newState);
     }
 
@@ -127,7 +127,7 @@ export default class Clouds extends Component {
     render() {
         return (
             <div id="clouds" onClick={this.mouseEvent}>
-                {this.state.cloudInfo.map(cloudInfo =>
+                {this.state.cloudInfoList.map(cloudInfo =>
                     <Cloud 
                         key={cloudInfo.id} 
                         x={cloudInfo.x} 
