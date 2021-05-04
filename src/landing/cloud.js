@@ -4,46 +4,75 @@ import _ from 'lodash'
 export default class Cloud extends Component {
     static hoverAnimSpeed = 1;
 
+    static initialYOffset = -200;
+    static appearTime = 250;
+    static openAnimTime = 1750;
+    static idleSpeed = 1;
+
+    static maxWidth = 250;
+    static minWidth = 150;
+    static maxHeight = 150;
+    static minHeight = 100;
+
+    static opacity = 0.9;
+
+    static speedLayerDiff = 0.1;
+    static sizeLayerDiff = 0.075;
+    static opacityLayerDiff = 0.2;
+
     constructor(props) {
         super(props);
-        let x = this.props.x-.5*this.props.width/window.innerWidth*100
-        let y = this.props.y-.5*this.props.height/window.innerHeight*100
+
+        let layer = this.props.layer;
+
+        let width = (Math.random()*(Cloud.maxWidth - Cloud.minWidth) + Cloud.minWidth)*(1 - layer*Cloud.sizeLayerDiff);
+        let height = (Math.random()*(Cloud.maxHeight - Cloud.minHeight) + Cloud.minHeight)*(1 - layer*Cloud.sizeLayerDiff);
+
+        let opacity = Cloud.opacity*(1 - Cloud.opacityLayerDiff*layer)
+
+        let x = this.props.x-.5*width/window.innerWidth*100
+        let y = this.props.y-.5*height/window.innerHeight*100
+
         this.state = {
+            layer,
             offsets: {
                 widthOffset: 0,
                 heightOffset: 0,
-                opacityOffset: 0
+                opacityOffset: 0,
+                xIdleAnimOffset: 0,
+                yIdleAnimOffset: 0,
+                yOpenAnimOffset: 0
             },
             style: {
-                width: this.props.width,
-                height: this.props.height,
-                left: x,
-                bottom: y,
-                opacity: this.props.opacity
+                width,
+                height,
+                x,
+                y,
+                opacity
             }
         }
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props !== prevProps) {
-            let trueWidthPercent = (this.props.width + this.state.offsets.widthOffset)/window.innerWidth
-            let trueHeightpercent = (this.props.height + this.state.offsets.heightOffset)/window.innerHeight
+    // componentDidUpdate(prevProps) {
+    //     if (this.props !== prevProps) {
+    //         let trueWidthPercent = (this.props.width + this.state.offsets.widthOffset)/window.innerWidth
+    //         let trueHeightpercent = (this.props.height + this.state.offsets.heightOffset)/window.innerHeight
 
-            let x = this.props.x-.5*trueWidthPercent*100
-            let y = this.props.y-.5*trueHeightpercent*100
+    //         let x = this.props.x-.5*trueWidthPercent*100
+    //         let y = this.props.y-.5*trueHeightpercent*100
 
-            let newState = _.cloneDeep(this.state);
+    //         let newState = _.cloneDeep(this.state);
             
-            newState.style.left = x;
-            newState.style.bottom = y;
-            this.setState(
-                newState
-            )
-        }
-    }
+    //         newState.style.left = x;
+    //         newState.style.bottom = y;
+    //         this.setState(
+    //             newState
+    //         )
+    //     }
+    // }
 
     mouseEnter = e => {
-        clearInterval(this.shrinkInterval)
+        clearInterval(this.shrinkInterval);
         this.growInterval = setInterval(() => {
             let newState = _.cloneDeep(this.state);
 
@@ -57,16 +86,13 @@ export default class Cloud extends Component {
             newState.offsets.opacityOffset += 0.01;
 
             this.setState(newState);
-        }, 1)
+        }, 1);
     }
 
     mouseLeave = e => {
-            clearInterval(this.growInterval)
-            this.shrinkInterval = setInterval(() => {
-            let newState = {
-                offsets: {...this.state.offsets},
-                style: {...this.state.style}
-            }
+        clearInterval(this.growInterval);
+        this.shrinkInterval = setInterval(() => {
+            let newState = _.cloneDeep(this.state);
 
             if (newState.offsets.opacityOffset <= 0) {
                 clearInterval(this.shrinkInterval)
@@ -78,22 +104,78 @@ export default class Cloud extends Component {
             newState.offsets.opacityOffset -= 0.01;
 
             this.setState(newState);
-        }, 1)
+        }, 1);
+    }
+
+    openAnimation = () => {
+        let timePercent = (Date.now() - this.startAnimDate.getTime())/Cloud.openAnimTime
+
+        // Linear version
+        // let yNewAnimOffset = (Clouds.initialYOffset)*(1 - timePercent);
+
+        let yNewOpenAnimOffset = ((timePercent - 1)**2)*Cloud.initialYOffset;
+
+        let newState = _.cloneDeep(this.state);
+
+        newState.offsets.yOpenAnimOffset = yNewOpenAnimOffset*(1 - this.state.layer*Cloud.speedLayerDiff)
+        
+        this.setState(newState);
+    }
+
+    idleAnimation = () => {
+        let xIncrement = Cloud.idleSpeed*(1 - this.state.layer*Cloud.speedLayerDiff)*0.01;
+
+        let xNew = this.state.style.x + xIncrement;
+        let width = this.state.style.width + this.state.offsets.widthOffset;
+
+        if (xNew > 100 + 100*width/(2*window.innerWidth)) {
+            xNew = -100*width/(2*window.innerWidth);
+        }
+
+        let newState = _.cloneDeep(this.state);
+
+        newState.style.x = xNew;
+
+        this.setState(newState);
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.startAnimDate = new Date();
+            this.openAnimInterval = setInterval(this.openAnimation, 1);
+            setTimeout(() => {clearInterval(this.openAnimInterval);}, Cloud.openAnimTime);
+        }, Cloud.appearTime)
+        this.idleAnimInterval = setInterval(this.idleAnimation, 1);
+
     }
 
     componentWillUnmount() {
         clearInterval(this.growInterval)
         clearInterval(this.shrinkInterval)
+        clearInterval(this.openAnimInterval);
+        clearInterval(this.idleAnimInterval);
+    }
+
+    onClick = e => {
+        let style = {}
+
+        style.width = (this.state.style.width + this.state.offsets.widthOffset) + 'px';
+        style.height = (this.state.style.height + this.state.offsets.heightOffset) + 'px';
+        style.left = (this.state.style.x + this.state.offsets.yIdleAnimOffset + this.state.offsets.yOpenAnimOffset) + 'vw';
+        style.bottom = (this.state.style.y + this.state.offsets.xIdleAnimOffset) + 'vh';
+        style.opacity = (this.state.style.opacity + this.state.offsets.opacityOffset).toString();
+
+        console.log(this.state.style.y);
     }
 
     render() {
-        let style = {...this.state.style}
+        let style = {}
 
-        style.width = (style.width + this.state.offsets.widthOffset) + 'px';
-        style.height = (style.height + this.state.offsets.heightOffset) + 'px';
-        style.left = style.left + 'vw';
-        style.bottom = style.bottom + 'vh';
-        style.opacity = (style.opacity + this.state.offsets.opacityOffset).toString();
+        style.width = (this.state.style.width + this.state.offsets.widthOffset) + 'px';
+        style.height = (this.state.style.height + this.state.offsets.heightOffset) + 'px';
+        style.left = (this.state.style.x + this.state.offsets.xIdleAnimOffset) + 'vw';
+        style.bottom = (this.state.style.y + this.state.offsets.yIdleAnimOffset + this.state.offsets.yOpenAnimOffset) + 'vh';
+        style.opacity = (this.state.style.opacity + this.state.offsets.opacityOffset).toString();
 
         return (
             <div 
@@ -101,6 +183,7 @@ export default class Cloud extends Component {
                 onMouseLeave={this.mouseLeave}
                 className="cloud" 
                 style={style} 
+                onClick={this.onClick}
             />
         )
     }
