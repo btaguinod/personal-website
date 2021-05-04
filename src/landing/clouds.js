@@ -11,11 +11,14 @@ export default class Clouds extends Component {
     static maxHeight = 150;
     static minHeight = 100;
 
-    static cloudsPerLayer = 7;
-    static layers = 4;
+    static opacity = 0.9;
 
-    static sizeLayerDiff = 0.15;
-    static speedLayerDiff = 0.05;
+    static cloudsPerLayer = 5;
+    static layers = 5;
+
+    static speedLayerDiff = 0.1;
+    static sizeLayerDiff = 0.1;
+    static opacityLayerDiff = 0.1;
 
 
     static loadDate = new Date();
@@ -25,7 +28,6 @@ export default class Clouds extends Component {
         let cloudInfo = [];
 
         for (let i = 0; i < Clouds.layers; i++) {
-            let layer = [];
             for (let j = 0; j < Clouds.cloudsPerLayer; j++) {
                 let width = (Math.random()*(Clouds.maxWidth- Clouds.minWidth) + Clouds.minWidth)*(1 - i*Clouds.sizeLayerDiff);
                 let height = (Math.random()*(Clouds.maxHeight - Clouds.minHeight) + Clouds.minHeight)*(1 - i*Clouds.sizeLayerDiff);
@@ -33,24 +35,32 @@ export default class Clouds extends Component {
                 let x = Math.random()*100;
                 let y = Math.random()*80 + 10;
 
-                for (let i = 0; i < layer.length; i++) {
-                    let distance = Math.sqrt((layer[i].x-x)**2+(layer[i].y-y)**2)
-                    if (distance > Math.max(width, height, layer[i].width, layer[i].height)) {
-                        i = -1;
+                for (let k = 0; k < cloudInfo.length; k++) {
+                    let percentX = cloudInfo[k].x-x;
+                    let percentY = cloudInfo[k].y-y;
+                    let distance = Math.sqrt((percentX*window.innerWidth*.01)**2+(percentY*window.innerHeight*.01)**2)
+
+                    if (distance < Math.min(width, height, cloudInfo[k].width, cloudInfo[k].height)) {
+                        x = Math.random()*100;
+                        y = Math.random()*80 + 10;
+
+                        k = -1;
                         continue;
                     }
                 }
 
-                layer.push({
+                console.log(Clouds.opacity*(1 - Clouds.opacityLayerDiff*i))
+
+                cloudInfo.push({
+                    layer: i,
                     width: width,
                     height: height,
                     x: x,
                     y: y,
                     yOffset: Clouds.initialYOffset *(1 - Clouds.speedLayerDiff*i),
-                    opacity: Cloud.opacity*(1 - i*.1)
+                    opacity: Clouds.opacity*(1 - Clouds.opacityLayerDiff*i)
                 })
             }
-            cloudInfo.push(layer);
         }
 
         console.log(cloudInfo)
@@ -66,13 +76,7 @@ export default class Clouds extends Component {
 
     mouseEvent = e => {
         
-        // this.setState({
-        //     x: e.clientX/window.innerWidth * 100, 
-        //     y: 100 - e.clientY/window.innerHeight * 100})
-        // console.log(this.state.y)
-        console.log(this.state.cloudInfo.map(layer => layer.map(
-            cloudInfo => cloudInfo )
-        ))
+        console.log(this.state.cloudInfo[0])
     }
 
     animate = () => {
@@ -83,11 +87,12 @@ export default class Clouds extends Component {
             return;
         }
         let newState = {...this.state};
-        let yOffset = (Clouds.initialYOffset)*(1 - timePercent);
-        for (let i = 0; i < Clouds.layers; i++) {
-            for (let j = 0; j < Clouds.cloudsPerLayer; j++) {
-                newState.cloudInfo[i][j].yOffset = yOffset*(1 - i*Clouds.speedLayerDiff)
-            }
+        // Linear version
+        // let yOffset = (Clouds.initialYOffset)*(1 - timePercent);
+
+        let yOffset = ((timePercent - 1)**2)*Clouds.initialYOffset;
+        for (let cloud of newState.cloudInfo) {
+            cloud.yOffset = yOffset*(1 - cloud.layer*Clouds.speedLayerDiff)
         }
         
         this.setState({
@@ -109,9 +114,8 @@ export default class Clouds extends Component {
     render() {
         return (
             <div id="clouds" onClick={this.mouseEvent}>
-                {this.state.cloudInfo.map(layer => layer.map(
-                    cloudInfo => 
-                    <Cloud key={cloudInfo.id} x={Math.round(cloudInfo.x)} y={cloudInfo.y + cloudInfo.yOffset} width={cloudInfo.width} height={cloudInfo.height} />)
+                {this.state.cloudInfo.map(cloudInfo =>
+                    <Cloud key={cloudInfo.id} x={Math.round(cloudInfo.x)} y={cloudInfo.y + cloudInfo.yOffset} width={cloudInfo.width} height={cloudInfo.height} opacity={cloudInfo.opacity}/>
                 )}
                 
             </div>
