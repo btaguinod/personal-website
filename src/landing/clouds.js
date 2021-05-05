@@ -3,7 +3,7 @@ import Cloud from './cloud'
 import './landing.css'
 
 export default class Clouds extends Component {
-    static totalClouds = 25;
+    static totalClouds = 20;
     static layers = 5;
 
     static cloudSpacing = 150;

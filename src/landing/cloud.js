@@ -23,18 +23,18 @@ export default class Cloud extends Component {
     constructor(props) {
         super(props);
 
-        let layer = this.props.layer;
+        this.layer = this.props.layer;
 
-        let width = (Math.random()*(Cloud.maxWidth - Cloud.minWidth) + Cloud.minWidth)*(1 - layer*Cloud.sizeLayerDiff);
-        let height = (Math.random()*(Cloud.maxHeight - Cloud.minHeight) + Cloud.minHeight)*(1 - layer*Cloud.sizeLayerDiff);
+        let width = (Math.random()*(Cloud.maxWidth - Cloud.minWidth) + Cloud.minWidth)*(1 - this.layer*Cloud.sizeLayerDiff);
+        let height = (Math.random()*(Cloud.maxHeight - Cloud.minHeight) + Cloud.minHeight)*(1 - this.layer*Cloud.sizeLayerDiff);
 
-        let opacity = Cloud.opacity*(1 - Cloud.opacityLayerDiff*layer)
+        let opacity = Cloud.opacity*(1 - Cloud.opacityLayerDiff*this.layer)
 
         let x = this.props.x
         let y = this.props.y
 
         this.state = {
-            layer,
+            drag: false,
             offsets: {
                 widthOffset: 0,
                 heightOffset: 0,
@@ -117,15 +117,17 @@ export default class Cloud extends Component {
 
         let newState = _.cloneDeep(this.state);
 
-        newState.offsets.yOpenAnimOffset = yNewOpenAnimOffset*(1 - this.state.layer*Cloud.speedLayerDiff)
+        newState.offsets.yOpenAnimOffset = yNewOpenAnimOffset*(1 - this.layer*Cloud.speedLayerDiff)
         
         this.setState(newState);
     }
 
     idleAnimation = () => {
-        let xIncrement = Cloud.idleSpeed*(1 - this.state.layer*Cloud.speedLayerDiff)*0.01;
+
+        let xIncrement = Cloud.idleSpeed*(1 - this.layer*Cloud.speedLayerDiff)*0.01;
 
         let xNew = this.state.style.x + xIncrement;
+
         let width = this.state.style.width + this.state.offsets.widthOffset;
 
         if (xNew > 100 + 100*width/(2*window.innerWidth)) {
@@ -135,7 +137,7 @@ export default class Cloud extends Component {
         let newState = _.cloneDeep(this.state);
 
         newState.style.x = xNew;
-
+        
         this.setState(newState);
     }
 
@@ -146,7 +148,6 @@ export default class Cloud extends Component {
             setTimeout(() => {clearInterval(this.openAnimInterval);}, Cloud.openAnimTime);
         }, Cloud.appearTime)
         this.idleAnimInterval = setInterval(this.idleAnimation, 1);
-
     }
 
     componentWillUnmount() {
@@ -157,16 +158,20 @@ export default class Cloud extends Component {
     }
 
     onClick = e => {
-        let style = {}
+        // let style = {}
 
-        style.width = (this.state.style.width + this.state.offsets.widthOffset) + 'px';
-        style.height = this.state.style.height + this.state.offsets.heightOffset;
-        style.left = (this.state.style.x + this.state.offsets.yIdleAnimOffset + this.state.offsets.yOpenAnimOffset) + 'vw';
-        style.bottom = (this.state.style.y + this.state.offsets.xIdleAnimOffset) + 'vh';
-        style.opacity = (this.state.style.opacity + this.state.offsets.opacityOffset).toString();
+        // style.width = (this.state.style.width + this.state.offsets.widthOffset) + 'px';
+        // style.height = this.state.style.height + this.state.offsets.heightOffset;
+        // style.left = (this.state.style.x + this.state.offsets.yIdleAnimOffset + this.state.offsets.yOpenAnimOffset) + 'vw';
+        // style.bottom = (this.state.style.y + this.state.offsets.xIdleAnimOffset) + 'vh';
+        // style.opacity = (this.state.style.opacity + this.state.offsets.opacityOffset).toString();
 
-        console.log(this.state.style.y, + (100 - 100*e.clientY/window.innerHeight), 100*(style.height/(2*window.innerHeight)));
+        // console.log(this.state.style.y, + (100 - 100*e.clientY/window.innerHeight), 100*(style.height/(2*window.innerHeight)));
         // console.log(this.state.style.x, + (100*e.clientX/window.innerWidth));
+    }
+
+    scroll = e => {
+        console.log(e);
     }
 
     render() {
@@ -179,16 +184,17 @@ export default class Cloud extends Component {
         style.height = height + 'px';
         
         let xCorrection = -100*(width/(2*window.innerWidth));
-        style.left = (this.state.style.x + this.state.offsets.xIdleAnimOffset + + xCorrection) + 'vw';
+        style.left = (this.state.style.x + xCorrection) + 'vw';
 
         let yCorrection = -100*(height/(2*window.innerHeight));
-        style.bottom = (this.state.style.y  + this.state.offsets.yIdleAnimOffset + this.state.offsets.yOpenAnimOffset + yCorrection) + 'vh';
+        style.bottom = (this.state.style.y  + this.state.offsets.yOpenAnimOffset + yCorrection) + 'vh';
         style.opacity = (this.state.style.opacity + this.state.offsets.opacityOffset).toString();
 
         return (
             <div 
                 onMouseEnter={this.mouseEnter} 
                 onMouseLeave={this.mouseLeave}
+                onScroll={this.scroll}
                 className="cloud" 
                 style={style} 
                 onClick={this.onClick}

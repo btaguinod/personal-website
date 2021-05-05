@@ -7,11 +7,11 @@ import Courses from './courses/courses';
 import './index.css';
 
 ReactDOM.render(
-  <div>
+  <React.StrictMode>
     <Landing />
     <About />
     <Projects />
     <Courses />
-  </div>,
+    </ React.StrictMode>,
   document.getElementById('root')
 );
