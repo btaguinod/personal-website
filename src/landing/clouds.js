@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import Cloud from './cloud'
 import './landing.css'
 
+const totalClouds = 20;
+const layers = 5;
+
+const cloudSpacing = 150;
 export default class Clouds extends Component {
-    static totalClouds = 20;
-    static layers = 5;
-
-    static cloudSpacing = 150;
-
     constructor(props) {
         super(props);
         
@@ -15,8 +14,8 @@ export default class Clouds extends Component {
 
         let cloudInfoList = [];
 
-        for (let i = 0; i < Clouds.totalClouds; i++) {
-            let layer = Math.floor(Math.random()*Clouds.layers);
+        for (let i = 0; i < totalClouds; i++) {
+            let layer = Math.floor(Math.random()*layers);
             
             let x = Math.random()*100;
             let y = Math.random()*80 + 10;
@@ -26,7 +25,7 @@ export default class Clouds extends Component {
                 let yPercent = cloudInfoList[k].y-y;
                 let distance = Math.sqrt((xPercent*window.innerWidth*.01)**2+(yPercent*window.innerHeight*.01)**2)
 
-                if (distance < Clouds.cloudSpacing) {
+                if (distance < cloudSpacing) {
                     x = Math.random()*100;
                     y = Math.random()*80 + 10;
 
