@@ -1,34 +1,34 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 
+const hoverAnimSpeed = 1;
+
+const initialYOffset = -200;
+const appearTime = 250;
+const openAnimTime = 1750;
+const idleSpeed = 1;
+
+const maxWidth = 250;
+const minWidth = 150;
+const maxHeight = 150;
+const minHeight = 100;
+
+const baseOpacity = 0.9;
+
+const speedLayerDiff = 0.1;
+const sizeLayerDiff = 0.075;
+const opacityLayerDiff = 0.2;
+
 export default class Cloud extends Component {
-    static hoverAnimSpeed = 1;
-
-    static initialYOffset = -200;
-    static appearTime = 250;
-    static openAnimTime = 1750;
-    static idleSpeed = 1;
-
-    static maxWidth = 250;
-    static minWidth = 150;
-    static maxHeight = 150;
-    static minHeight = 100;
-
-    static opacity = 0.9;
-
-    static speedLayerDiff = 0.1;
-    static sizeLayerDiff = 0.075;
-    static opacityLayerDiff = 0.2;
-
     constructor(props) {
         super(props);
 
         this.layer = this.props.layer;
 
-        let width = (Math.random()*(Cloud.maxWidth - Cloud.minWidth) + Cloud.minWidth)*(1 - this.layer*Cloud.sizeLayerDiff);
-        let height = (Math.random()*(Cloud.maxHeight - Cloud.minHeight) + Cloud.minHeight)*(1 - this.layer*Cloud.sizeLayerDiff);
+        let width = (Math.random()*(maxWidth - minWidth) + minWidth)*(1 - this.layer*sizeLayerDiff);
+        let height = (Math.random()*(maxHeight - minHeight) + minHeight)*(1 - this.layer*sizeLayerDiff);
 
-        let opacity = Cloud.opacity*(1 - Cloud.opacityLayerDiff*this.layer)
+        let opacity = baseOpacity*(1 - opacityLayerDiff*this.layer)
 
         let x = this.props.x
         let y = this.props.y
@@ -41,7 +41,7 @@ export default class Cloud extends Component {
                 opacityOffset: 0,
                 xIdleAnimOffset: 0,
                 yIdleAnimOffset: 0,
-                yOpenAnimOffset: Cloud.initialYOffset
+                yOpenAnimOffset: initialYOffset
             },
             style: {
                 width,
@@ -81,9 +81,9 @@ export default class Cloud extends Component {
                 return;
             }
 
-            newState.offsets.widthOffset += 0.1;
-            newState.offsets.heightOffset += 0.1;
-            newState.offsets.opacityOffset += 0.01;
+            newState.offsets.widthOffset += 0.1*hoverAnimSpeed;
+            newState.offsets.heightOffset += 0.1*hoverAnimSpeed;
+            newState.offsets.opacityOffset += 0.01*hoverAnimSpeed;
 
             this.setState(newState);
         }, 1);
@@ -99,32 +99,32 @@ export default class Cloud extends Component {
                 return
             }
 
-            newState.offsets.widthOffset -= 0.1;
-            newState.offsets.heightOffset -= 0.1;
-            newState.offsets.opacityOffset -= 0.01;
+            newState.offsets.widthOffset -= 0.1*hoverAnimSpeed;
+            newState.offsets.heightOffset -= 0.1*hoverAnimSpeed;
+            newState.offsets.opacityOffset -= 0.01*hoverAnimSpeed;
 
             this.setState(newState);
         }, 1);
     }
 
     openAnimation = () => {
-        let timePercent = (Date.now() - this.startAnimDate.getTime())/Cloud.openAnimTime
+        let timePercent = (Date.now() - this.startAnimDate.getTime())/openAnimTime
 
         // Linear version
         // let yNewAnimOffset = (Clouds.initialYOffset)*(1 - timePercent);
 
-        let yNewOpenAnimOffset = ((timePercent - 1)**2)*Cloud.initialYOffset;
+        let yNewOpenAnimOffset = ((timePercent - 1)**2)*initialYOffset;
 
         let newState = _.cloneDeep(this.state);
 
-        newState.offsets.yOpenAnimOffset = yNewOpenAnimOffset*(1 - this.layer*Cloud.speedLayerDiff)
+        newState.offsets.yOpenAnimOffset = yNewOpenAnimOffset*(1 - this.layer*speedLayerDiff)
         
         this.setState(newState);
     }
 
     idleAnimation = () => {
 
-        let xIncrement = Cloud.idleSpeed*(1 - this.layer*Cloud.speedLayerDiff)*0.01;
+        let xIncrement = idleSpeed*(1 - this.layer*speedLayerDiff)*0.01;
 
         let xNew = this.state.style.x + xIncrement;
 
@@ -145,8 +145,8 @@ export default class Cloud extends Component {
         setTimeout(() => {
             this.startAnimDate = new Date();
             this.openAnimInterval = setInterval(this.openAnimation, 1);
-            setTimeout(() => {clearInterval(this.openAnimInterval);}, Cloud.openAnimTime);
-        }, Cloud.appearTime)
+            setTimeout(() => {clearInterval(this.openAnimInterval);}, openAnimTime);
+        }, appearTime)
         this.idleAnimInterval = setInterval(this.idleAnimation, 1);
     }
 
