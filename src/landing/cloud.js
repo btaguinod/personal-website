@@ -30,8 +30,8 @@ export default class Cloud extends Component {
 
         let opacity = Cloud.opacity*(1 - Cloud.opacityLayerDiff*layer)
 
-        let x = this.props.x-.5*width/window.innerWidth*100
-        let y = this.props.y-.5*height/window.innerHeight*100
+        let x = this.props.x
+        let y = this.props.y
 
         this.state = {
             layer,
@@ -41,7 +41,7 @@ export default class Cloud extends Component {
                 opacityOffset: 0,
                 xIdleAnimOffset: 0,
                 yIdleAnimOffset: 0,
-                yOpenAnimOffset: 0
+                yOpenAnimOffset: Cloud.initialYOffset
             },
             style: {
                 width,
@@ -160,21 +160,29 @@ export default class Cloud extends Component {
         let style = {}
 
         style.width = (this.state.style.width + this.state.offsets.widthOffset) + 'px';
-        style.height = (this.state.style.height + this.state.offsets.heightOffset) + 'px';
+        style.height = this.state.style.height + this.state.offsets.heightOffset;
         style.left = (this.state.style.x + this.state.offsets.yIdleAnimOffset + this.state.offsets.yOpenAnimOffset) + 'vw';
         style.bottom = (this.state.style.y + this.state.offsets.xIdleAnimOffset) + 'vh';
         style.opacity = (this.state.style.opacity + this.state.offsets.opacityOffset).toString();
 
-        console.log(this.state.style.y);
+        console.log(this.state.style.y, + (100 - 100*e.clientY/window.innerHeight), 100*(style.height/(2*window.innerHeight)));
+        // console.log(this.state.style.x, + (100*e.clientX/window.innerWidth));
     }
 
     render() {
         let style = {}
 
-        style.width = (this.state.style.width + this.state.offsets.widthOffset) + 'px';
-        style.height = (this.state.style.height + this.state.offsets.heightOffset) + 'px';
-        style.left = (this.state.style.x + this.state.offsets.xIdleAnimOffset) + 'vw';
-        style.bottom = (this.state.style.y + this.state.offsets.yIdleAnimOffset + this.state.offsets.yOpenAnimOffset) + 'vh';
+        let width = this.state.style.width + this.state.offsets.widthOffset
+        style.width = width + 'px';
+
+        let height = this.state.style.height + this.state.offsets.heightOffset
+        style.height = height + 'px';
+        
+        let xCorrection = -100*(width/(2*window.innerWidth));
+        style.left = (this.state.style.x + this.state.offsets.xIdleAnimOffset + + xCorrection) + 'vw';
+
+        let yCorrection = -100*(height/(2*window.innerHeight));
+        style.bottom = (this.state.style.y  + this.state.offsets.yIdleAnimOffset + this.state.offsets.yOpenAnimOffset + yCorrection) + 'vh';
         style.opacity = (this.state.style.opacity + this.state.offsets.opacityOffset).toString();
 
         return (

@@ -3,10 +3,10 @@ import Cloud from './cloud'
 import './landing.css'
 
 export default class Clouds extends Component {
-    static totalClouds = 30;
+    static totalClouds = 25;
     static layers = 5;
 
-    static cloudSpacing = 100;
+    static cloudSpacing = 150;
 
     constructor(props) {
         super(props);
@@ -35,15 +35,11 @@ export default class Clouds extends Component {
                 }
             }
 
-            // console.log(Clouds.opacity*(1 - Clouds.opacityLayerDiff*layer))
-
             cloudInfoList.push({
                 id: i,
                 layer,
                 x,
                 y,
-                yAnimOffset: Clouds.initialYOffset *(1 - Clouds.speedLayerDiff*layer),
-                opacity: Clouds.opacity*(1 - Clouds.opacityLayerDiff*layer)
             })
 
         }
