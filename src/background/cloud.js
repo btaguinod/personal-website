@@ -129,8 +129,6 @@ export default class Cloud extends Component {
     }
 
     idleAnimation = () => {
-        let startTime = Date.now();
-
         let xIncrement = idleSpeed*(1 - this.layer*speedLayerDiff)*0.01;
         
         this.setState((prevState, props) => {
@@ -148,13 +146,6 @@ export default class Cloud extends Component {
 
             return newState;
         });
-
-        let endTime = Date.now();
-
-        if (endTime - startTime > 100) {
-            console.log(endTime - startTime);
-            console.log(this.props.id)
-        }
     }
 
     componentDidMount() {
@@ -190,7 +181,7 @@ export default class Cloud extends Component {
         console.log(e);
     }
 
-    render() {
+    getStyle = () => {
         let style = {}
 
         let width = this.state.style.width + this.state.offsets.widthOffset
@@ -205,6 +196,12 @@ export default class Cloud extends Component {
         let yCorrection = -100*(height/(2*window.innerHeight));
         style.bottom = (this.state.style.y  + this.state.offsets.yOpenAnimOffset + yCorrection) + 'vh';
         style.opacity = (this.state.style.opacity + this.state.offsets.opacityOffset).toString();
+
+        return style;
+    }
+
+    render() {
+        let style = this.getStyle();
 
         return (
             <div 

@@ -1,7 +1,7 @@
-#landing {
+#background {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 400vh;
     /* background-color: #02A9F7; */
     background: linear-gradient(180deg, #ffff, #02A9F7);
     background-size: 400% 400%;
@@ -17,7 +17,7 @@
 }
 
 .cloud {
-    position: absolute;
+    position: fixed;
     background-color: white; 
 }
 

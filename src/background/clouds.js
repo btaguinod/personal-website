@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import Cloud from './cloud'
-import './landing.css'
+import './background.css'
+import Card from '../card';
 
 const totalClouds = 20;
 const layers = 5;
 
 const cloudSpacing = 150;
 
-const yScrollOffsetMult = 1;
+// const yScrollOffsetMult = 1;
+
 export default class Clouds extends Component {
     constructor(props) {
         super(props);
@@ -62,7 +64,6 @@ export default class Clouds extends Component {
             <div id="clouds" onClick={this.mouseEvent}>
                 {this.state.cloudInfoList.map(cloudInfo =>
                     <Cloud 
-                        id={cloudInfo.id}
                         key={cloudInfo.id} 
                         layer={cloudInfo.layer}
                         x={cloudInfo.x} 
