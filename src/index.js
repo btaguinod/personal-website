@@ -4,15 +4,14 @@ import About from './about/about';
 import Projects from './projects/projects';
 import Courses from './courses/courses';
 import './index.css';
-import BackgroundContainer from './background/background';
+import Background from './background/background';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BackgroundContainer>
+    <Background>
       <About />
-      <Projects />
-      <Courses />
-    </ BackgroundContainer>
+      <About />
+    </ Background>
   </ React.StrictMode>,
   document.getElementById('root')
 );

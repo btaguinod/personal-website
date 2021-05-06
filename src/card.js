@@ -22,7 +22,7 @@ export default class Card extends Cloud {
                 onMouseEnter={this.mouseEnter} 
                 onMouseLeave={this.mouseLeave}
                 onScroll={this.scroll}
-                className="cloud" 
+                className="card" 
                 style={style} 
                 onClick={this.onClick}
             > {this.props.text} </div>

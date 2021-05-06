@@ -1,6 +1,6 @@
 #about {
-    position: static;
-    width: 100vw;
-    height: 200vh;
+    position: relative;
+    width: 0;
+    height: 100vh;
     /* background-color: #000000; */
 }
