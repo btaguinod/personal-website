@@ -6,6 +6,8 @@ const totalClouds = 20;
 const layers = 5;
 
 const cloudSpacing = 150;
+
+const yScrollOffsetMult = 1;
 export default class Clouds extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +40,7 @@ export default class Clouds extends Component {
                 id: i,
                 layer,
                 x,
-                y,
+                y
             })
 
         }
@@ -60,6 +62,7 @@ export default class Clouds extends Component {
             <div id="clouds" onClick={this.mouseEvent}>
                 {this.state.cloudInfoList.map(cloudInfo =>
                     <Cloud 
+                        id={cloudInfo.id}
                         key={cloudInfo.id} 
                         layer={cloudInfo.layer}
                         x={cloudInfo.x} 

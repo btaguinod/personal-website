@@ -74,71 +74,87 @@ export default class Cloud extends Component {
     mouseEnter = e => {
         clearInterval(this.shrinkInterval);
         this.growInterval = setInterval(() => {
-            let newState = _.cloneDeep(this.state);
-
-            if (this.state.style.opacity + newState.offsets.opacityOffset >= 1) {
+            if (this.state.style.opacity + this.state.offsets.opacityOffset >= 1) {
                 clearInterval(this.growInterval)
                 return;
             }
 
-            newState.offsets.widthOffset += 0.1*hoverAnimSpeed;
-            newState.offsets.heightOffset += 0.1*hoverAnimSpeed;
-            newState.offsets.opacityOffset += 0.01*hoverAnimSpeed;
+            this.setState((prevState, props) => {
+                let newState = _.cloneDeep(prevState);
 
-            this.setState(newState);
+                newState.offsets.widthOffset = prevState.offsets.widthOffset + 0.1*hoverAnimSpeed;
+                newState.offsets.heightOffset = prevState.offsets.heightOffset + 0.1*hoverAnimSpeed;
+                newState.offsets.opacityOffset = prevState.offsets.opacityOffset + 0.01*hoverAnimSpeed;
+
+                return newState;
+            });
         }, 1);
     }
 
     mouseLeave = e => {
         clearInterval(this.growInterval);
         this.shrinkInterval = setInterval(() => {
-            let newState = _.cloneDeep(this.state);
-
-            if (newState.offsets.opacityOffset <= 0) {
+            if (this.state.offsets.opacityOffset <= 0) {
                 clearInterval(this.shrinkInterval)
                 return
             }
 
-            newState.offsets.widthOffset -= 0.1*hoverAnimSpeed;
-            newState.offsets.heightOffset -= 0.1*hoverAnimSpeed;
-            newState.offsets.opacityOffset -= 0.01*hoverAnimSpeed;
+            this.setState((prevState, props) => {
+                let newState = _.cloneDeep(prevState);
 
-            this.setState(newState);
+                newState.offsets.widthOffset = prevState.offsets.widthOffset - 0.1*hoverAnimSpeed;
+                newState.offsets.heightOffset = prevState.offsets.heightOffset - 0.1*hoverAnimSpeed;
+                newState.offsets.opacityOffset = prevState.offsets.opacityOffset - 0.01*hoverAnimSpeed;
+
+                return newState;
+            });
         }, 1);
     }
 
     openAnimation = () => {
         let timePercent = (Date.now() - this.startAnimDate.getTime())/openAnimTime
-
-        // Linear version
-        // let yNewAnimOffset = (Clouds.initialYOffset)*(1 - timePercent);
-
-        let yNewOpenAnimOffset = ((timePercent - 1)**2)*initialYOffset;
-
-        let newState = _.cloneDeep(this.state);
-
-        newState.offsets.yOpenAnimOffset = yNewOpenAnimOffset*(1 - this.layer*speedLayerDiff)
         
-        this.setState(newState);
+        this.setState((prevState, props) => {
+            // Linear version
+            // let yNewAnimOffset = (Clouds.initialYOffset)*(1 - timePercent);
+
+            let yNewOpenAnimOffset = ((timePercent - 1)**2)*initialYOffset;
+
+            let newState = _.cloneDeep(prevState);
+
+            newState.offsets.yOpenAnimOffset = yNewOpenAnimOffset*(1 - this.layer*speedLayerDiff);
+
+            return newState;
+        });
     }
 
     idleAnimation = () => {
+        let startTime = Date.now();
 
         let xIncrement = idleSpeed*(1 - this.layer*speedLayerDiff)*0.01;
-
-        let xNew = this.state.style.x + xIncrement;
-
-        let width = this.state.style.width + this.state.offsets.widthOffset;
-
-        if (xNew > 100 + 100*width/(2*window.innerWidth)) {
-            xNew = -100*width/(2*window.innerWidth);
-        }
-
-        let newState = _.cloneDeep(this.state);
-
-        newState.style.x = xNew;
         
-        this.setState(newState);
+        this.setState((prevState, props) => {
+            let xNew = prevState.style.x + xIncrement;
+
+            let width = prevState.style.width + prevState.offsets.widthOffset;
+
+            if (xNew > 100 + 100*width/(2*window.innerWidth)) {
+                xNew = -100*width/(2*window.innerWidth);
+            }
+
+            let newState = _.cloneDeep(prevState);
+
+            newState.style.x = xNew;
+
+            return newState;
+        });
+
+        let endTime = Date.now();
+
+        if (endTime - startTime > 100) {
+            console.log(endTime - startTime);
+            console.log(this.props.id)
+        }
     }
 
     componentDidMount() {
