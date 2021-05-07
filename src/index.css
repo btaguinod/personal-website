@@ -13,9 +13,3 @@ body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
-.card {
-    position: absolute;
-    color: white;
-    background-color: black;
-    text-align: center;
-}

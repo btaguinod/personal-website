@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Cloud from './cloud'
 import './background.css'
-import Card from '../card';
 
 const totalClouds = 20;
 const layers = 5;
