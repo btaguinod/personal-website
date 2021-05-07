@@ -1,6 +1,11 @@
 html, body {
     margin: 0;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -12,4 +17,23 @@ body::-webkit-scrollbar {
 body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+
+    width: 100%;
+    padding: 10px;
+    box-sizing:border-box;
+}
+
+.cell {
+    text-align: center;
+    pointer-events: auto;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    font-size: 150%;
 }

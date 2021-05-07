@@ -5,7 +5,11 @@ export default class Courses extends Component {
     render() {
         return (
             <div id='courses'>
-                
+                <div  className="grid">
+                    <div className="cell">
+                        Courses Section Coming Soon!
+                    </div>
+                </div>
             </div>
         )
     }
