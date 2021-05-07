@@ -1,6 +1,5 @@
 #projects {
-    position: absolute;
-    width: 100vw;
+    position: relative;
+    width: 0;
     height: 100vh;
-    background-color: #02A9F7;
 }
