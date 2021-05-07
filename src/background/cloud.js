@@ -7,7 +7,7 @@ const initialYOffset = -200;
 const appearTime = 250;
 const openAnimTime = 1750;
 const idleSpeed = 1;
-const scrollMult = 50;
+const scrollMult = 25;
 
 const maxWidth = 250;
 const minWidth = 150;
@@ -19,7 +19,7 @@ const baseOpacity = 0.9;
 const speedLayerDiff = 0.1;
 const sizeLayerDiff = 0.075;
 const opacityLayerDiff = 0.2;
-const scrollLayerDiff = 0.2;
+const scrollLayerDiff = 0.15;
 
 export default class Cloud extends Component {
     constructor(props) {
