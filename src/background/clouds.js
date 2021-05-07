@@ -42,7 +42,8 @@ export default class Clouds extends Component {
                 id: i,
                 layer,
                 x,
-                y
+                y,
+                yScrollOffset: 0
             })
 
         }
@@ -56,8 +57,10 @@ export default class Clouds extends Component {
 
     mouseEvent = e => {
         
-        // console.log(this.state.cloudInfoList[0])
+        console.log(window.pageYOffset/ (window.document.body.clientHeight - window.innerHeight))
     }
+
+
 
     render() {
         return (

@@ -3,9 +3,6 @@ import Clouds from './clouds';
 import './background.css'
 
 export default class Background extends Component {
-    click = e => {
-        console.log(this.props)
-    }
 
     render() {
         return (

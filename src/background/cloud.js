@@ -7,6 +7,7 @@ const initialYOffset = -200;
 const appearTime = 250;
 const openAnimTime = 1750;
 const idleSpeed = 1;
+const scrollMult = 50;
 
 const maxWidth = 250;
 const minWidth = 150;
@@ -18,6 +19,7 @@ const baseOpacity = 0.9;
 const speedLayerDiff = 0.1;
 const sizeLayerDiff = 0.075;
 const opacityLayerDiff = 0.2;
+const scrollLayerDiff = 0.2;
 
 export default class Cloud extends Component {
     constructor(props) {
@@ -39,8 +41,7 @@ export default class Cloud extends Component {
                 widthOffset: 0,
                 heightOffset: 0,
                 opacityOffset: 0,
-                xIdleAnimOffset: 0,
-                yIdleAnimOffset: 0,
+                yScrollOffset: 0,
                 yOpenAnimOffset: initialYOffset
             },
             style: {
@@ -130,9 +131,11 @@ export default class Cloud extends Component {
 
     idleAnimation = () => {
         let xIncrement = idleSpeed*(1 - this.layer*speedLayerDiff)*0.01;
+        let scrollPercent = (window.pageYOffset/(window.document.body.clientHeight - window.innerHeight))
         
         this.setState((prevState, props) => {
             let xNew = prevState.style.x + xIncrement;
+            let yOffset = (scrollPercent-0.5)*scrollMult*(1-scrollLayerDiff*props.layer)
 
             let width = prevState.style.width + prevState.offsets.widthOffset;
 
@@ -143,6 +146,7 @@ export default class Cloud extends Component {
             let newState = _.cloneDeep(prevState);
 
             newState.style.x = xNew;
+            newState.offsets.yScrollOffset = yOffset;
 
             return newState;
         });
@@ -165,16 +169,8 @@ export default class Cloud extends Component {
     }
 
     onClick = e => {
-        // let style = {}
-
-        // style.width = (this.state.style.width + this.state.offsets.widthOffset) + 'px';
-        // style.height = this.state.style.height + this.state.offsets.heightOffset;
-        // style.left = (this.state.style.x + this.state.offsets.yIdleAnimOffset + this.state.offsets.yOpenAnimOffset) + 'vw';
-        // style.bottom = (this.state.style.y + this.state.offsets.xIdleAnimOffset) + 'vh';
-        // style.opacity = (this.state.style.opacity + this.state.offsets.opacityOffset).toString();
-
-        // console.log(this.state.style.y, + (100 - 100*e.clientY/window.innerHeight), 100*(style.height/(2*window.innerHeight)));
-        // console.log(this.state.style.x, + (100*e.clientX/window.innerWidth));
+        console.log('offset', this.state.offsets.yScrollOffset)
+        console.log((window.pageYOffset/(window.document.body.clientHeight - window.innerHeight)))
     }
 
     scroll = e => {
@@ -194,7 +190,7 @@ export default class Cloud extends Component {
         style.left = (this.state.style.x + xCorrection) + 'vw';
 
         let yCorrection = -100*(height/(2*window.innerHeight));
-        style.bottom = (this.state.style.y  + this.state.offsets.yOpenAnimOffset + yCorrection) + 'vh';
+        style.bottom = (this.state.style.y  + this.state.offsets.yOpenAnimOffset + this.state.offsets.yScrollOffset + yCorrection) + 'vh';
         style.opacity = (this.state.style.opacity + this.state.offsets.opacityOffset).toString();
 
         return style;
