@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './courses.css'
+import '../index.css'
 
 export default class Courses extends Component {
     render() {
