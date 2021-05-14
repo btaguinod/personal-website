@@ -6,19 +6,25 @@
     background: linear-gradient(180deg, #ffff, #02A9F7);
     background-size: 400% 400%;
 
-    animation: open 2s linear;
+    animation: openBackground 2.5s cubic-bezier(0, 0, .25, 1);
     animation-fill-mode: forwards;
 }
 
-@keyframes open {
+@keyframes openBackground {
     0% {background-position:50% 0%}
-    0% {background-position:50% 25%}
+    /* 50% {background-position:50% 25%} */
     100% {background-position:50% 100%}
 }
 
 .cloud {
     position: fixed;
-    background-color: white; 
+    background-color: white;
+    animation: openCloud 2s cubic-bezier(0, 0, .25, 1) 0.5s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes openCloud {
+    0% {transform: translateY(100vh)}
 }
 
 #clouds {
