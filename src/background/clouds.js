@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Cloud from './cloud'
 import './background.css'
 
+
 const totalClouds = 20;
-const layers = 5;
 
 const cloudSpacing = 150;
 
@@ -12,13 +12,10 @@ const cloudSpacing = 150;
 export default class Clouds extends Component {
     constructor(props) {
         super(props);
-        
-        this.stage = 0;
 
         let cloudInfoList = [];
 
         for (let i = 0; i < totalClouds; i++) {
-            let layer = Math.floor(Math.random()*layers);
             
             let x = Math.random()*100;
             let y = Math.random()*80 + 10;
@@ -39,10 +36,8 @@ export default class Clouds extends Component {
 
             cloudInfoList.push({
                 id: i,
-                layer,
                 x,
                 y,
-                yScrollOffset: 0
             })
 
         }
@@ -51,15 +46,7 @@ export default class Clouds extends Component {
             cloudInfoList: cloudInfoList
         }
 
-
     }
-
-    mouseEvent = e => {
-        
-        console.log(window.pageYOffset/ (window.document.body.clientHeight - window.innerHeight))
-    }
-
-
 
     render() {
         return (
@@ -67,7 +54,6 @@ export default class Clouds extends Component {
                 {this.state.cloudInfoList.map(cloudInfo =>
                     <Cloud 
                         key={cloudInfo.id} 
-                        layer={cloudInfo.layer}
                         x={cloudInfo.x} 
                         y={cloudInfo.y} 
                     />

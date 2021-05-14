@@ -10,10 +10,10 @@ import Landing from './landing/landing';
 ReactDOM.render(
   <React.StrictMode>
     <Background>
-      <Landing />
+      {/* <Landing />
       <About />
       <Projects />
-      <Courses />
+      <Courses /> */}
     </ Background>
   </ React.StrictMode>,
   document.getElementById('root')

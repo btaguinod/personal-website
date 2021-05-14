@@ -1,7 +1,7 @@
 #background {
     position: relative;
     width: 100vw;
-    /* height: 200vh; */
+    height: 300vh;
     /* background-color: #02A9F7; */
     background: linear-gradient(180deg, #ffff, #02A9F7);
     background-size: 400% 400%;
