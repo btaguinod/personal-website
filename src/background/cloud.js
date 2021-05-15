@@ -12,7 +12,7 @@ export default class Cloud extends Component {
         let width = (Math.random()*(maxWidth - minWidth) + minWidth);
         let height = (Math.random()*(maxHeight - minHeight) + minHeight);
 
-        let x = this.props.x
+        let x = this.props.x * -30 *0.01;
         let y = this.props.y
 
         this.state = {
@@ -26,8 +26,10 @@ export default class Cloud extends Component {
     getStyle = () => {
         let style = {};
 
-        let xAdjustment = -100*this.state.width/(2*window.innerWidth)
-        style.left = (this.state.x + xAdjustment) + 'vw';
+        // let xAdjustment = -100*this.state.width/(2*window.innerWidth)
+        // style.left = (this.state.x + xAdjustment) + 'vw';
+
+        style.animationDelay = this.state.x + 's';
 
         let yAdjustment = -100*this.state.height/(2*window.innerHeight);
         style.bottom = (this.state.y + yAdjustment) + 'vh';
