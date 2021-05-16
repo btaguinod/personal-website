@@ -1,11 +1,26 @@
+:root {
+    --highlight-1: #2AABE8;
+    --highlight-2: #E8CC2A;
+    --highlight-3: #E82A2A;
+    --dark: #0E1212;
+    --light: #DBDBDB;
+    --subtext: #808080;
+
+    --regular: 400;
+    --semi-bold: 600;
+}
+
 html, body {
+    font-family: 'Cairo', sans-serif;
     margin: 0;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+    color: var(--light);
+    font-weight: var(--regular);
+    /* background-color: var(--dark); */
 }
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -18,3 +33,36 @@ body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+.highlight {
+    color: var(--highlight-1);
+    font-weight: var(--semi-bold);
+}
+
+.subtext {
+    color: var(--subtext);
+}
+
+header {
+    background-color: var(--dark);
+    font-size: 24px;
+    height: 54px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+
+    padding: 0 10px;
+}
+
+#nameLink {
+    padding: 0 15px;
+}
+
+#pageLinks {
+    display: flex;
+}
+
+.pageLink {
+    padding: 0 15px;
+}
+
