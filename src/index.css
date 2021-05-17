@@ -16,6 +16,7 @@ html, body {
     color: var(--light);
     font-weight: var(--regular);
     background-color: var(--dark);
+    scroll-behavior: smooth;
 }
 
 a {
@@ -75,7 +76,7 @@ header {
     position: fixed;
     right: 25px;
     color: var(--highlight-1);
-    top: calc(50vh - (4em + 15px*3)/2);
+    top: calc(50% - (4em + 15px*3)/2);
 
     width: auto;
     height: calc(4em + 15px*3);
@@ -103,12 +104,12 @@ header {
     height: 100vh;
 }
 
-#about-text {
+.page-text {
     position: absolute;
     width: 600px;
     min-height: 100vh;
 
-    left: calc(50vw - 300px);
+    left: calc(50% - 300px);
 
     display: flex;
     flex-direction: column;
@@ -144,8 +145,9 @@ header {
 #arrow {
     font-size: 36px;
 
-    position: relative;
+    position: absolute;
     color: var(--highlight-1);
 
-    bottom: 56px;
+    bottom: 15px;
+    left: calc(50% - 1em);
 }

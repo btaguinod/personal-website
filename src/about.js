@@ -6,7 +6,7 @@ import { faArrowCircleDown } from '@fortawesome/free-solid-svg-icons';
 export default function About() {
     return (
         <div className="page">
-            <div id="about-text">
+            <div className="page-text">
                 <div className="title">Hi, I'm <span class="highlight"> Benedict </span></div>
                 <div className="subtext-2">I'm an EECS student at <span class="highlight"> UC Berkeley </span> and a software developer at <span class="highlight"> Placesoft </span></div>
                 <div className="subtext-1">Check out my work below!</div>
