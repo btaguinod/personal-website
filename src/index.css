@@ -38,11 +38,6 @@ body {
     color: var(--highlight-1);
     font-weight: var(--semi-bold);
 }
-
-.subtext {
-    color: var(--subtext);
-}
-
 header {
     box-sizing: border-box;
 
@@ -58,6 +53,8 @@ header {
     text-align: center;
 
     padding: 0 10px;
+
+    z-index: 1;
 }
 
 #nameLink {
@@ -87,6 +84,8 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
+    z-index: 1;
 }
 
 .icon {
@@ -98,7 +97,8 @@ header {
     align-items: center;
 }
 
-#about {
+.page {
+    position: relative;
     width: 100vw;
     height: 100vh;
 }
@@ -106,11 +106,46 @@ header {
 #about-text {
     position: absolute;
     width: 600px;
-    height: 400px;
+    min-height: 100vh;
 
-    top: calc(50% - 200px);
-    left: calc(50% - 300px);
+    left: calc(50vw - 300px);
 
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-size: 72px;
+    line-height: 103px;
+}
+
+.subtext-2 {
+    color: var(--subtext);
+    font-size: 36px;
+    line-height: 67px;
+}
+
+.subtext-1 {
+    font-size: 36px;
+    font-weight: var(--semi-bold);
+    line-height: 67px;
+}
+
+#bar {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 5px;
+    background-color: var(--highlight-1);
+}
+
+#arrow {
+    font-size: 36px;
+
+    position: relative;
+    color: var(--highlight-1);
+
+    bottom: 56px;
 }
