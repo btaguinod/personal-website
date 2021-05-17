@@ -15,7 +15,7 @@ html, body {
     margin: 0;
     color: var(--light);
     font-weight: var(--regular);
-    /* background-color: var(--dark); */
+    background-color: var(--dark);
 }
 
 a {
@@ -76,18 +76,17 @@ header {
     font-size: 36px;
 
     position: fixed;
-    right: 0;
-    top: 50%;
+    right: 25px;
     color: var(--highlight-1);
-    margin-top: -125px;
+    top: calc(50vh - (4em + 15px*3)/2);
 
-    width: 75px;
-    height: 250px;
+    width: auto;
+    height: calc(4em + 15px*3);
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .icon {
@@ -99,3 +98,19 @@ header {
     align-items: center;
 }
 
+#about {
+    width: 100vw;
+    height: 100vh;
+}
+
+#about-text {
+    position: absolute;
+    width: 600px;
+    height: 400px;
+
+    top: calc(50% - 200px);
+    left: calc(50% - 300px);
+
+    display: flex;
+    align-items: center;
+}
