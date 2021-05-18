@@ -1,0 +1,105 @@
+#menu-button {
+    position: relative;
+    
+    border: none;
+    height: 54px;
+    width: 54px;
+    margin: 0;
+}
+
+#menu-button input {
+    cursor:pointer;
+
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    left: 0;
+    margin: 0;
+
+    opacity: 0;
+}
+
+#menu-button span {
+    pointer-events: none;
+
+    position: absolute;
+    height: 2px;
+    background-color: var(--light);
+
+    
+}
+
+#menu-button span:nth-last-child(1) {
+    width: 30px;
+    top: calc((27px) - 1px + 10px);
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+
+    transition: transform 0.25s;
+}
+
+#menu-button span:nth-last-child(2) {
+    width: 30px;
+    top: calc((27px) - 1px - 10px);
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+
+    transition: transform 0.25s;
+}
+
+#menu-button span:nth-last-child(3) {
+    width: 30px;
+    top: calc(27px - 1px );
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+
+    transition: transform 0.25s;
+}
+
+#menu-button span:nth-last-child(4) {
+    width: 30px;
+    top: calc(27px - 1px);
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+
+    transform: rotate(45deg) scale(0, 1);
+
+    transition: transform 0.25s;
+}
+
+#menu-button span:nth-last-child(5) {
+    width: 30px;
+    top: calc(27px - 1px);
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+
+    transform: rotate(-45deg) scale(0, 1);
+    transform-origin: center;
+
+    transition: transform 0.25s;
+}
+
+#menu-button input:checked ~ span:nth-last-child(1) {
+    transform: scale(0, 1);
+}
+
+#menu-button input:checked ~ span:nth-last-child(2) {
+    transform: scale(0, 1);
+}
+
+#menu-button input:checked ~ span:nth-last-child(3) {
+    transform: scale(0, 1);
+}
+
+#menu-button input:checked ~ span:nth-last-child(4) {
+    transform: rotate(45deg) scale(1, 1);
+}
+
+#menu-button input:checked ~ span:nth-last-child(5) {
+    transform: rotate(-45deg) scale(1, 1);
+}
