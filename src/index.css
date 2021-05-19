@@ -43,7 +43,34 @@ body {
     color: var(--highlight-1);
     font-weight: var(--semi-bold);
     height: inherit;
+    position: relative;
 }
+
+.highlight::after, .page-link::after {
+    position: absolute;
+    content: '';
+    top: 1.5em;
+    background-color: var(--highlight-1);
+    width: 0;
+    
+    height: 0.1em;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+    transition: 0.5s;
+}
+
+.highlight:hover::after, .page-link:hover::after {
+    width: 100%;
+}
+
+.page-link:hover {
+    font-weight: var(--semi-bold);
+    color: var(--highlight-1);
+}
+
+
 header {
     box-sizing: border-box;
 
@@ -78,6 +105,7 @@ header {
 }
 
 .page-link {
+    position: relative;
     padding: 0 15px;
     width: 85px;
 }
@@ -169,7 +197,7 @@ header {
 #bar {
     z-index: 1;
     position: fixed;
-    bottom: 0;
+    bottom: 1px;
     width: 100%;
     height: 5px;
     background-color: var(--highlight-1);
@@ -227,7 +255,7 @@ header {
     .page-link {
         box-sizing: border-box;
         width: 100vw;
-        text-align: left;
+        text-align: center;
         background-color: var(--dark);
         /* transition: transform 0.5s; */
     }
