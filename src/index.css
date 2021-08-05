@@ -12,6 +12,8 @@
     --intro-first: 1.5s;
     --intro-second: 2s;
     --intro-third: 1s;
+    --intro-full: 
+        calc(var(--intro-first) + var(--intro-second) + var(--intro-third));
 }
 
 html, body {
@@ -79,6 +81,8 @@ body {
     width: 100%;
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
+
+    overflow: hidden;
 }
 
 .page-text {

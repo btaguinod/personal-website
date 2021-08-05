@@ -1,0 +1,10 @@
+#projects {
+    animation: display-none 0.001s ease var(--intro-full);
+    animation-fill-mode: both;
+}
+
+@keyframes display-none {
+    0% {
+        height: 0;
+    }
+}
