@@ -23,3 +23,7 @@
 @keyframes side-links-intro {
     0% {transform: translateX(calc(36px + 25px))}
 }
+
+@media only screen and (max-width: 600px) {
+    #side-links {display: none;}
+}
