@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Header from './header.js';
-import SideLinks from './sideLinks';
-import About from './about';
-import Projects from './projects';
-import Courses from './courses';
+import Header from './Header.js';
+import SideLinks from './SideLinks';
+import About from './About';
+import Projects from './Projects';
+import Courses from './Courses';
 
 let vh = window.innerHeight*0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`)

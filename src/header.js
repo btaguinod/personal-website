@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MenuButton from './menuButton/menuButton';
+import MenuButton from './MenuButton/MenuButton';
 
 export default class Header extends Component {
     constructor(props) {
