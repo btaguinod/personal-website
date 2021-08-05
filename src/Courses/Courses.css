@@ -1,4 +1,4 @@
 #courses {
-    animation: display-none 0.001s ease var(--intro-full);
+    animation: hide 0.001s ease var(--intro-full);
     animation-fill-mode: both;
 }

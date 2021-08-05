@@ -177,3 +177,9 @@ body {
 @keyframes bar-intro {
     0% {transform: scaleX(0)}
 }
+
+@keyframes hide {
+    0% {
+        height: 0;
+    }
+}
