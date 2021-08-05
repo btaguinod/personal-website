@@ -1,0 +1,25 @@
+#side-links {
+    font-size: 36px;
+
+    position: fixed;
+    right: 25px;
+    color: var(--highlight-1);
+    top: calc(50% - (4em + 15px*3)/2);
+    width:auto;
+    height: calc(4em + 15px*3);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    z-index: 5;
+
+    animation: side-links-intro var(--intro-third) ease 
+    calc(var(--intro-first) + var(--intro-second));
+    animation-fill-mode: both;
+}
+
+@keyframes side-links-intro {
+    0% {transform: translateX(calc(36px + 25px))}
+}

@@ -1,5 +1,6 @@
 import React from 'react';
-import './index.css';
+import './Courses.css';
+
 export default function Courses() {
     return (
         <div className="page" id="courses">

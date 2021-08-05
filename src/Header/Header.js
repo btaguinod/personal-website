@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MenuButton from './MenuButton/MenuButton';
+import './Header.css';
 
 export default class Header extends Component {
     constructor(props) {

@@ -1,0 +1,19 @@
+#arrow {
+    font-size: 36px;
+
+    position: absolute;
+    color: var(--highlight-1);
+
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+    animation: arrow-intro var(--intro-third) ease 
+        calc(var(--intro-first) + var(--intro-second));
+    animation-fill-mode: both;
+}
+
+@keyframes arrow-intro {
+    0% {transform: translateY(calc(15px + 36px))}
+}

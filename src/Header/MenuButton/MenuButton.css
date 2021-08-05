@@ -5,6 +5,9 @@
     height: 54px;
     width: 54px;
     margin: 0;
+
+    display: none;
+    z-index: 0;
 }
 
 #menu-button input {
@@ -102,4 +105,16 @@
 
 #menu-button input:checked ~ span:nth-last-child(5) {
     transform: rotate(-45deg) scale(1, 1);
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    #menu-button {
+        display:block;
+    }
+
+    #menu-button input:not(:checked) + div .page-link{
+        transform: translateX(100vw);
+    }
 }
