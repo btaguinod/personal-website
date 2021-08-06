@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Header from './Header/Header.js';
 import SideLinks from './SideLinks/SideLinks';
-import About from './About/About';
-import Projects from './Projects/Projects';
-import Courses from './Courses/Courses';
+import About from './Pages/About/About';
+import Projects from './Pages/Projects/Projects';
+import Courses from './Pages/Courses/Courses';
 
 ReactDOM.render(
   <React.StrictMode>
