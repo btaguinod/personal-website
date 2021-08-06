@@ -13,7 +13,7 @@ header {
     text-align: center;
     align-items: center;
 
-    padding: 0 10px;
+    padding: 0 24px;
 
     z-index: 1000;
 
@@ -23,7 +23,6 @@ header {
 }
 
 #name-link {
-    padding: 0 15px;
     white-space: nowrap;
 }
 
@@ -35,13 +34,13 @@ header {
 }
 
 .page-links {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    column-gap: 32px;
 }
 
 .page-link {
     position: relative;
-    margin: 0 15px;
-    /* width: 85px; */
 }
 
 .page-link::after {
@@ -74,11 +73,11 @@ header {
     }
 
     .page-links {
+        position: fixed;
         right: 0;
         width: 100vw;
-        flex-direction: column;
-        align-items: flex-start;
-        
+
+        grid-template-columns: auto;
     }
 
     .page-link {
@@ -89,11 +88,9 @@ header {
     }
 
     header {
-        padding: 0;
-            
-        flex-wrap: wrap;
+        padding-left: 16px;
+        padding-right: 0;
     }
-
 }
 
 @keyframes header-intro {

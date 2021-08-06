@@ -2,3 +2,8 @@
     animation: hide var(--intro-full);
     animation-fill-mode: backwards;
 }
+
+#courses-title {
+    width: fit-content;
+    margin: 54px auto 0 auto;
+}

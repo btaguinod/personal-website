@@ -14,6 +14,8 @@
     --intro-third: 1s;
     --intro-full: 
         calc(var(--intro-first) + var(--intro-second) + var(--intro-third));
+
+    --body-width: 1140px;
 }
 
 html, body {
@@ -78,24 +80,15 @@ body {
 
 .page {
     position: relative;
-    width: 100%;
+    max-width: var(--body-width);
     height: 100vh;
 
-    overflow: hidden;
-}
-
-.page-text {
-    position: absolute;
-    max-width: 600px;
-    min-height: 100%;
-
+    padding: 0 32px;
     margin: 0 auto;
-    left: 0;
-    right: 0;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    overflow: hidden;
+
+
 }
 
 .title {
