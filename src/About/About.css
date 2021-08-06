@@ -12,6 +12,9 @@
     animation: arrow-intro var(--intro-third) ease 
         calc(var(--intro-first) + var(--intro-second));
     animation-fill-mode: backwards;
+
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
 }
 
 @keyframes arrow-intro {
