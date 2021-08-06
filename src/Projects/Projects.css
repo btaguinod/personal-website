@@ -1,4 +1,4 @@
 #projects {
-    animation: hide 0.001s ease var(--intro-full);
-    animation-fill-mode: both;
+    animation: hide var(--intro-full);
+    animation-fill-mode: backwards;
 }
