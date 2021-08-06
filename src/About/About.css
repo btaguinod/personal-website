@@ -11,7 +11,7 @@
 
     animation: arrow-intro var(--intro-third) ease 
         calc(var(--intro-first) + var(--intro-second));
-    animation-fill-mode: both;
+    animation-fill-mode: backwards;
 }
 
 @keyframes arrow-intro {
