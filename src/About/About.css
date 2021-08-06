@@ -15,6 +15,7 @@
 
     -webkit-transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
 }
 
 @keyframes arrow-intro {
