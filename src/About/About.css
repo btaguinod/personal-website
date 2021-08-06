@@ -12,12 +12,12 @@
     animation: arrow-intro var(--intro-third) ease 
         calc(var(--intro-first) + var(--intro-second));
     animation-fill-mode: backwards;
-
-    -webkit-transform-style: preserve-3d;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: translate3d(0,0,0);
 }
 
 @keyframes arrow-intro {
     0% {transform: translateY(calc(15px + 36px))}
+}
+
+@media only screen and (max-width: 768px) {
+    #arrow {display: none;}
 }
