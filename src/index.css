@@ -10,11 +10,11 @@
     --regular: 400;
     --semi-bold: 600;
 
-    /* --intro-first: 1.5s;
+    --intro-first: 1.5s;
     --intro-second: 2s;
     --intro-third: 1s;
     --intro-full: 
-        calc(var(--intro-first) + var(--intro-second) + var(--intro-third)); */
+        calc(var(--intro-first) + var(--intro-second) + var(--intro-third));
 
     --body-width: 1140px;
 }
