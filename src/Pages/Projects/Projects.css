@@ -4,6 +4,128 @@
 }
 
 #projects-title {
+    display: block;
+
     width: fit-content;
     margin: 54px auto 0 auto;
+}
+
+#projects-title .title {
+    line-height: 72px;
+}
+
+#project-cards {
+    margin: 60px 0;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 60px;
+
+}
+
+.project-card {
+    display: flex;
+    align-items: stretch;
+    column-gap: 20px;
+
+    height: auto;
+}
+
+.project-card-image {
+    position: relative;
+    width: 50%;
+}
+
+.project-card-image-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--dark);
+    opacity: 25%;
+    transition: 0.3s;
+}
+
+.project-card-image-overlay:hover {
+    opacity: 0;
+}
+
+.project-card-image img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+
+    border-radius: 8px;
+}
+
+.project-card-text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.project-card-title {
+    width: fit-content;
+
+    font-size: 54px;
+    line-height: 54px;
+    font-weight: var(--semi-bold)
+}
+
+.project-card-title.highlight::after {
+    top: 1em;
+}
+
+.project-card-desc {
+    color: var(--subtext);
+    font-size: 36px;
+    line-height: 40px;
+}
+
+.project-card-stack {
+    color: var(--light);
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.project-card-icons {
+    color: var(--highlight-1);
+    font-size: 36px;
+    line-height: 36px;
+    display: inline-block;
+
+    overflow: hidden;
+}
+
+.project-card-icon {
+    margin-right: 8px;
+}
+
+@media only screen and (max-width: 992px) {
+    .project-card-image {display: none;}
+
+    #projects-title .title {
+        font-size: 64px;
+        line-height: 64px;
+    }
+
+    #project-cards {
+        row-gap: 30px;
+        margin: 30px 0;
+    }
+
+    .project-card-text {
+        row-gap: 10px;
+    }
+
+    .project-card-title {
+        font-size: 48px;
+        line-height: 48px;
+    }
+
+    .project-card-desc {
+        font-size: 26px;
+        line-height: 26px;
+    }
 }

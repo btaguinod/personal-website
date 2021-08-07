@@ -4,6 +4,8 @@
 }
 
 #courses-title {
+    display: block;
+
     width: fit-content;
     margin: 54px auto 0 auto;
 }
