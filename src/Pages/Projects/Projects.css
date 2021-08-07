@@ -108,11 +108,12 @@
     #projects-title .title {
         font-size: 64px;
         line-height: 64px;
+        margin: 0;
     }
 
     #project-cards {
-        row-gap: 30px;
-        margin: 30px 0;
+        row-gap: 48px;
+        margin: 48px 0;
     }
 
     .project-card-text {
@@ -120,8 +121,8 @@
     }
 
     .project-card-title {
-        font-size: 48px;
-        line-height: 48px;
+        font-size: 32px;
+        line-height: 32px;
     }
 
     .project-card-desc {
