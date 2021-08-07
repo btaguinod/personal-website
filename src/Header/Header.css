@@ -67,29 +67,50 @@ header {
     color: var(--highlight-1);
 }
 
+header .side-links {
+    display: flex;
+}
+
 @media only screen and (max-width: 600px) {
     #main-links {
         display: none;
     }
 
     .page-links {
-        position: fixed;
+        position: relative;
         right: 0;
         width: 100vw;
 
         grid-template-columns: auto;
+
+        background-color: var(--dark);
     }
 
     .page-link {
         box-sizing: border-box;
         width: 100vw;
         text-align: center;
-        background-color: var(--dark);
     }
 
     header {
         padding-left: 16px;
         padding-right: 0;
+    }
+
+    header .side-links {
+        position: relative;
+        flex-direction: row;
+        right: 0;
+        top: 0;
+
+        justify-content: space-evenly;
+        height: 2em;
+
+        font-size: inherit;
+    }
+
+    #menu-button input:not(:checked) + .page-links {
+        display: none;
     }
 }
 

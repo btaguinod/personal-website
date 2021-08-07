@@ -9,7 +9,7 @@ import { faFileAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default function SideLinks() {
     return (
-        <div id="side-links">
+        <div className="side-links">
             <a href="mailto:webmaster@example.com" className="icon"><FontAwesomeIcon icon={faEnvelope} /></a>
             <a href="https://github.com/btaguinod" className="icon"><FontAwesomeIcon icon={faGithub} /></a>
             <a href="https://www.linkedin.com/in/benedict-taguinod/" className="icon"><FontAwesomeIcon icon={faLinkedin} /></a>

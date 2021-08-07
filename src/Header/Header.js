@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MenuButton from './MenuButton/MenuButton';
+import SideLinks from '../SideLinks/SideLinks';
 import './Header.css';
 
 export default class Header extends Component {
@@ -36,7 +37,7 @@ export default class Header extends Component {
                 <a id="name-link" href="#about">
                     <span className="highlight">Benedict</span> Taguinod
                 </a>
-                <MenuButton children={<div className="page-links" id="dropdown-links">{links}</div>} />
+                <MenuButton children={<div className="page-links" id="dropdown-links">{links}<SideLinks /></div>} />
                 <div className="page-links" id="main-links">{links}</div>
                 
                 

@@ -111,10 +111,6 @@
 
 @media only screen and (max-width: 600px) {
     #menu-button {
-        display:block;
-    }
-
-    #menu-button input:not(:checked) + div .page-link{
-        transform: translateX(100vw);
+        display: block;
     }
 }

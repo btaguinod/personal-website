@@ -1,4 +1,4 @@
-#side-links {
+.side-links {
     font-size: 36px;
 
     position: fixed;
@@ -25,5 +25,5 @@
 }
 
 @media only screen and (max-width: 768px) {
-    #side-links {display: none;}
+    .side-links {display: none;}
 }
