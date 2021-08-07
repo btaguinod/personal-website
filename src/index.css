@@ -5,6 +5,7 @@
     --dark: #0E1212;
     --light: #DBDBDB;
     --subtext: #808080;
+    --course-card: #1A1F1F;
 
     --regular: 400;
     --semi-bold: 600;
@@ -46,14 +47,13 @@ body {
 .highlight {
     color: var(--highlight-1);
     font-weight: var(--semi-bold);
-    height: inherit;
     position: relative;
 }
 
 .highlight::after {
     position: absolute;
     content: '';
-    top: 1.5em;
+    top: 1.4em;
     background-color: var(--highlight-1);
     width: 0;
     
