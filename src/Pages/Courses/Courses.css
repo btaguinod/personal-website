@@ -27,10 +27,10 @@
     background-color: var(--course-card);
     border-radius: 8px;
 
-    width: 228px;
+    width: 212px;
     height: 256px;
 
-    padding: 16px;
+    padding: 24px;
 
     display: flex;
     flex-direction: column;
@@ -51,8 +51,8 @@
 }
 
 .course-skills, .course-projects, .course-website {
-    font-size: 18px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 18px;
     font-weight: var(--regular);
 }
 
