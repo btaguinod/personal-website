@@ -43,7 +43,7 @@
     left: 0;
     right: 0;
     background-color: var(--dark);
-    opacity: 25%;
+    opacity: .25;
     transition: 0.3s;
 }
 
