@@ -5,8 +5,8 @@ import './Projects.css';
 export default function Projects() {
     return (
         <div className="page" id="projects">
-            <a id="projects-title" href="https://github.com/btaguinod"> <div className="title">Personal <span className="highlight"> Projects </span> </div>
-            </a>
+            <div id="projects-title"> <div className="title">Personal <a href="https://github.com/btaguinod" className="highlight"> Projects </a> </div>
+            </div>
             <ProjectCards />
         </div>
     )
