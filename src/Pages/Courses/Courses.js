@@ -6,7 +6,7 @@ export default function Courses() {
     return (
         <div className="page" id="courses">
             <div id="courses-title">
-                <div className="title"> University <span className="highlight"> Courses </span></div>
+                <div className="title"> University Courses</div>
             </div>
             <CourseCards />
         </div>
