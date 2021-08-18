@@ -14,7 +14,7 @@ const cards = [
         title: 'Personal Website',
         desc: 'A software developer portfolio that details who I am, my projects, and my university courses.',
         stack: ['React', 'CSS'],
-        url: 'https://btaguinod.netlify.app',
+        url: 'https://benedict-taguinod.com',
         codeUrl: 'https://github.com/btaguinod/personal-website',
         imageLocation: ''
     }
