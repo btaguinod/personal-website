@@ -6,7 +6,7 @@ const cards = [
         title: 'Purple Politics',
         desc: 'A news website that provides various perspectives on political events',
         stack: ['Flask REST API', 'React', 'Python NLP', 'MongoDB', 'IBM Watson NLU API', 'Algolia API'],
-        url: 'https://purplepolitics.netlify.app',
+        url: 'https://purplepoliticsevents.com',
         codeUrl: 'https://github.com/btaguinod/purple-politics',
         imageLocation: process.env.PUBLIC_URL + '/img/purplepolitics.png'
     },
