@@ -3,6 +3,14 @@ import ProjectCard from './ProjectCard';
 
 const cards = [
     {
+        title: 'LiBearium',
+        desc: 'Provides an easy way to look for nearby libraries and how popular the libraries are at that time (CalHacks 8.0 Project)',
+        stack: ['React', 'CSS'],
+        url: 'https://libearium.tech/',
+        codeUrl: 'https://github.com/shreystechtips/SmartQueue',
+        imageLocation: process.env.PUBLIC_URL + '/img/libearium.jpg'
+    },
+    {
         title: 'Purple Politics',
         desc: 'A news website that provides various perspectives on political events',
         stack: ['Flask REST API', 'React', 'Python NLP', 'MongoDB', 'IBM Watson NLU API', 'Algolia API'],
@@ -12,7 +20,7 @@ const cards = [
     },
     {
         title: 'Personal Website',
-        desc: 'A software developer portfolio that details who I am, my projects, and my university courses.',
+        desc: 'A software developer portfolio that details who I am, my projects, and my university courses',
         stack: ['React', 'CSS'],
         url: 'https://benedict-taguinod.com',
         codeUrl: 'https://github.com/btaguinod/personal-website',

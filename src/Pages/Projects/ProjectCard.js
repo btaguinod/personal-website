@@ -15,7 +15,7 @@ export default function ProjectCard(props) {
     }
 
     return (
-        <div className="project-card">
+        <div className={"project-card" + (!props.card.imageLocation ? "no-image": "")}>
             {image}
             <div className="project-card-text">
                 <a href={props.card.url} className="project-card-title highlight">
