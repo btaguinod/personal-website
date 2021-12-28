@@ -13,11 +13,15 @@ const cards = [
     {
         title: 'CS 61C',
         name: 'Machine Structures',
-        skills: [],
-        projects: [],
-        url: 'https://cs61c.org/sp21/',
+        skills: ['C', 'RISC-V', 'Computer Architecture'],
+        projects: [
+            ['Philphix', 'https://cs61c.org/fa21/projects/proj1/'], 
+            ['CS61Classify', 'https://cs61c.org/fa21/projects/proj2/'], 
+            ['Numc', 'https://cs61c.org/fa21/projects/proj4/']
+        ],
+        url: 'https://cs61c.org/fa21/',
         school: 'UC Berkeley',
-        time: 'Fall 2021 (Currently Taking)'
+        time: 'Fall 2021'
     },
     {
         title: 'CS 61B',
