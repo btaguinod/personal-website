@@ -11,6 +11,28 @@ export default function CourseCards() {
 
 const cards = [
     {
+        title: 'CS 188',
+        name: 'Introduction to Artificial Intelligence',
+        skills: ['Python', 'Machine Learning'],
+        projects: [
+            ['Pac-Man Projects', 'https://inst.eecs.berkeley.edu/~cs188/sp22/projects/']
+        ],
+        url: 'https://inst.eecs.berkeley.edu/~cs188/sp22/',
+        school: 'UC Berkeley',
+        time: 'Spring 2022'
+    },
+    {
+        title: 'CS 161',
+        name: 'Computer Security',
+        skills: ['C', 'Go','Network Security', 'Web Security'],
+        projects: [
+            ['File Sharing System', 'https://proj2.cs161.org/']
+        ],
+        url: 'https://sp22.cs161.org/',
+        school: 'UC Berkeley',
+        time: 'Spring 2022'
+    },
+    {
         title: 'CS 61C',
         name: 'Machine Structures',
         skills: ['C', 'RISC-V', 'Computer Architecture'],
