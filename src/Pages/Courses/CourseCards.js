@@ -11,6 +11,30 @@ export default function CourseCards() {
 
 const cards = [
     {
+        title: 'CS 162',
+        name: 'Operating Systems and Systems Programming',
+        skills: ['C', 'Operating Systems'],
+        projects: [
+            ['User Programs', 'https://inst.eecs.berkeley.edu/~cs162/fa22/static/proj/proj-userprog/'],
+            ['Threads', 'https://inst.eecs.berkeley.edu/~cs162/fa22/static/proj/proj-threads/'],
+            ['File Systems', 'https://inst.eecs.berkeley.edu/~cs162/fa22/static/proj/proj-filesys/']
+        ],
+        url: 'https://inst.eecs.berkeley.edu/~cs162/fa22/',
+        school: 'UC Berkeley',
+        time: 'Fall 2022'
+    },
+    {
+        title: 'EPS 109',
+        name: 'Introduction to Artificial Intelligence',
+        skills: ['Python', 'Data Visualization'],
+        projects: [
+            ['3D Fractals', 'http://militzer.berkeley.edu/EPS109/final_projects_2022/index.html']
+        ],
+        url: 'http://militzer.berkeley.edu/EPS109/',
+        school: 'UC Berkeley',
+        time: 'Fall 2022'
+    },
+    {
         title: 'CS 188',
         name: 'Introduction to Artificial Intelligence',
         skills: ['Python', 'Machine Learning'],
