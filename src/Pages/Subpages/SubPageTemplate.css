@@ -1,0 +1,68 @@
+.subpage-title {
+    display: block;
+
+    width: fit-content;
+    margin: 32px auto 8px auto;
+}
+
+.subpage-title .title {
+    line-height: 72px;
+}
+
+.subpage-description {
+    display: block;
+
+    width: fit-content;
+    margin: 0 auto 0 auto;
+}
+
+.subpage-description .subtext-2 {
+    line-height: 48px;
+    text-align: center;
+}
+
+.subpage-card {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-column-gap: 20px;
+    column-gap: 20px;
+    height: auto;
+}
+
+.subpage-card-content {
+    position: relative;
+
+    flex-grow: 1;
+}
+
+.subpage-card-content .subpage-card-content-inner {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    border-radius: 8px;
+}
+
+.subpage-card-title {
+    width: fit-content;
+
+    font-size: 54px;
+    line-height: 54px;
+    font-weight: var(--semi-bold);
+
+    margin-bottom: 4px;
+}
+
+.subpage-card-description {
+    color: var(--subtext);
+    font-size: 36px;
+    line-height: 40px;
+}
+
+.subpage-cards {
+    margin: 60px 0;
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 60px;
+    row-gap: 60px;
+}
