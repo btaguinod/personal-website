@@ -21,18 +21,27 @@
     text-align: center;
 }
 
+.subpage-cards {
+    margin: 60px 0;
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 60px;
+    row-gap: 60px;
+}
+
 .subpage-card {
     display: grid;
     grid-template-columns: 2fr 3fr;
     grid-column-gap: 20px;
     column-gap: 20px;
     height: auto;
+    width: 100%;
 }
 
 .subpage-card-content {
     position: relative;
 
-    flex-grow: 1;
+    /* flex-grow: 1; */
 }
 
 .subpage-card-content .subpage-card-content-inner {
@@ -41,6 +50,12 @@
     width: 100%;
     right: 0;
     border-radius: 8px;
+}
+
+.subpage-card-content canvas {
+    /* override the inline html css */
+    height: 100%!important;
+    width: 100%!important;
 }
 
 .subpage-card-title {
@@ -59,10 +74,36 @@
     line-height: 40px;
 }
 
-.subpage-cards {
-    margin: 60px 0;
-    display: flex;
-    flex-direction: column;
-    grid-row-gap: 60px;
-    row-gap: 60px;
+@media only screen and (max-width: 992px) {
+    /* .subpage-card-content {display: none;} */
+
+    .subpage-card-title .title {
+        font-size: 64px;
+        line-height: 64px;
+        margin: 0;
+    }
+
+    .subpage-cards {
+        row-gap: 48px;
+        margin: 48px 0;
+    }
+
+    .subpage-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .subpage-card-text {
+        row-gap: 10px;
+    }
+
+    .subpage-card-title {
+        font-size: 32px;
+        line-height: 32px;
+    }
+
+    .subpage-card-description {
+        font-size: 26px;
+        line-height: 26px;
+    }
 }
