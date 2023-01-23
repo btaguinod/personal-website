@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NDVEZET6TY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-NDVEZET6TY');
-    </script>
-
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -33,5 +22,32 @@
   <body onLoad="window.scroll(0, 0)">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script type="text/javascript">
+      (function () {
+          var head = document.getElementsByTagName("head").item(0);
+          var script = document.createElement("script");
+
+          var src = (document.location.protocol == 'https:'
+              ? 'https://www.formilla.com/scripts/feedback.js'
+              : 'http://www.formilla.com/scripts/feedback.js');
+
+          script.setAttribute("type", "text/javascript");
+          script.setAttribute("src", src); script.setAttribute("async", true);
+
+          var complete = false;
+
+          script.onload = script.onreadystatechange = function () {
+              if (!complete && (!this.readyState
+                  || this.readyState == 'loaded'
+                  || this.readyState == 'complete')) {
+                  complete = true;
+                  Formilla.guid = 'cs315275-c4aa-44ab-8ab8-26f3607e0a57';
+                  Formilla.loadWidgets();
+              }
+          };
+
+          head.appendChild(script);
+      })();
+  </script>
   </body>
 </html>
