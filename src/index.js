@@ -8,6 +8,7 @@ import Projects from './Pages/Projects/Projects';
 import Courses from './Pages/Courses/Courses';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Models from './Pages/Subpages/Models/Models';
+import faunadb from 'faunadb';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -33,5 +34,27 @@ function MainPage() {
       <Courses />
       <div id="bar"/>
     </div>
+  );
+}
+
+window.onload = async () => {
+  console.log(process.env.REACT_APP_DB_KEY);
+  const q = faunadb.query;
+  const client = new faunadb.Client({
+    secret: process.env.REACT_APP_DB_KEY,
+  });
+  const dbdocument = await client.query(
+    q.Get(q.Match(q.Index('logs')))
+  );
+  const d = new Date();
+  let time = d.toTimeString();
+  console.log(dbdocument);
+  await client.query(
+    q.Update(dbdocument.ref, {
+      data: {
+        hits: dbdocument.data.hits + 1,
+        times: dbdocument.data.times.concat([time])
+      },
+    })
   );
 }
