@@ -38,7 +38,6 @@ function MainPage() {
 }
 
 window.onload = async () => {
-  console.log(process.env.REACT_APP_DB_KEY);
   const q = faunadb.query;
   const client = new faunadb.Client({
     secret: process.env.REACT_APP_DB_KEY,
@@ -48,12 +47,11 @@ window.onload = async () => {
   );
   const d = new Date();
   let time = d.toTimeString();
-  console.log(dbdocument);
   await client.query(
     q.Update(dbdocument.ref, {
       data: {
         hits: dbdocument.data.hits + 1,
-        times: dbdocument.data.times.concat([time])
+        times: [time].concat(dbdocument.data.times)
       },
     })
   );
