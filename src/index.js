@@ -7,8 +7,8 @@ import About from './Pages/About/About';
 import Projects from './Pages/Projects/Projects';
 import Courses from './Pages/Courses/Courses';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import Models from './Pages/Subpages/Models/Models';
 import faunadb from 'faunadb';
+import GosperShells from './Pages/Subpages/GosperShells/GosperShells';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -18,7 +18,7 @@ root.render(
     <BrowserRouter>
         <Routes>
           <Route exact path='/' element={<MainPage />} />
-          <Route path='/models' element={<Models />}/>
+          <Route path='/gosper-shells' element={<GosperShells />}/>
         </Routes>
     </BrowserRouter>
   </React.StrictMode>

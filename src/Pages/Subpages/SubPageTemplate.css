@@ -40,7 +40,6 @@
 
 .subpage-card-content {
     position: relative;
-
     /* flex-grow: 1; */
 }
 
@@ -58,6 +57,12 @@
     width: 100%!important;
 }
 
+.subpage-card-text {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .subpage-card-title {
     width: fit-content;
 
@@ -65,7 +70,7 @@
     line-height: 54px;
     font-weight: var(--semi-bold);
 
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 }
 
 .subpage-card-description {
