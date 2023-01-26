@@ -3,6 +3,14 @@ import ProjectCard from './ProjectCard';
 
 const cards = [
     {
+        title: 'Watch Light Controller',
+        desc: 'Fitbit and ESP8266 microcontroller applications to control lights using watch orientation',
+        stack: ['JavaScript', 'Fitbit SDK', 'Arduino C/C++', 'ESP8266'],
+        url: 'https://github.com/btaguinod/fitbit-esp8266-light-controller',
+        codeUrl: 'https://github.com/btaguinod/fitbit-esp8266-light-controller',
+        imageLocation: ''
+    },
+    {
         title: 'Gosper Shells',
         desc: '3D structures with patterns that resemble a Gosper Curve',
         stack: ['3D Modeling'],
