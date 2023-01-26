@@ -7,6 +7,8 @@
 
 .subpage-title .title {
     line-height: 72px;
+
+    animation: none;
 }
 
 .subpage-description {
@@ -19,6 +21,8 @@
 .subpage-description .subtext-2 {
     line-height: 48px;
     text-align: center;
+    
+    animation: none
 }
 
 .subpage-cards {
