@@ -1,12 +1,12 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import Header from './Header/Header.js';
+import Header from './Header/Header';
 import SideLinks from './SideLinks/SideLinks';
 import About from './Pages/About/About';
 import Projects from './Pages/Projects/Projects';
 import Courses from './Pages/Courses/Courses';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import faunadb from 'faunadb';
 import GosperShells from './Pages/Subpages/GosperShells/GosperShells';
 
@@ -16,10 +16,10 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-        <Routes>
-          <Route exact path='/' element={<MainPage />} />
-          <Route path='/gosper-shells' element={<GosperShells />}/>
-        </Routes>
+      <Routes>
+        <Route exact path='/' element={<MainPage />} />
+        <Route path='/gosper-shells' element={<GosperShells />} />
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
@@ -32,7 +32,7 @@ function MainPage() {
       <About />
       <Projects />
       <Courses />
-      <div id="bar"/>
+      <div id="bar" />
     </div>
   );
 }
