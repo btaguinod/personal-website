@@ -3,6 +3,22 @@ import ProjectCard from './ProjectCard';
 
 const cards = [
     {
+        title: 'Educational Equity',
+        desc: 'An informational site presenting topics around education and resources',
+        stack: ['Svelte', 'Sveltekit'],
+        url: 'https://educational-equity.vercel.app/',
+        codeUrl: 'https://github.com/btaguinod/educational-equity',
+    },
+
+    {
+        title: 'Purple Politics',
+        desc: 'A news website that provides various perspectives on political events',
+        stack: ['Flask REST API', 'React', 'Python NLP', 'MongoDB', 'IBM Watson NLU API', 'Algolia API'],
+        url: 'https://purplepoliticsevents.com',
+        codeUrl: 'https://github.com/btaguinod/purple-politics',
+        imageLocation: '/img/purplepolitics.png'
+    },
+    {
         title: 'Watch Light Controller',
         desc: 'Fitbit and ESP8266 microcontroller applications to control lights using watch orientation',
         stack: ['JavaScript', 'Fitbit SDK', 'Arduino C/C++', 'ESP8266'],
@@ -27,17 +43,9 @@ const cards = [
         imageLocation: '/img/libearium.jpg'
     },
     {
-        title: 'Purple Politics',
-        desc: 'A news website that provides various perspectives on political events',
-        stack: ['Flask REST API', 'React', 'Python NLP', 'MongoDB', 'IBM Watson NLU API', 'Algolia API'],
-        url: 'https://purplepoliticsevents.com',
-        codeUrl: 'https://github.com/btaguinod/purple-politics',
-        imageLocation: '/img/purplepolitics.png'
-    },
-    {
         title: 'Personal Website',
         desc: 'A software developer portfolio that details who I am, my projects, and my university courses',
-        stack: ['React', 'CSS'],
+        stack: ['Astro', 'React', 'CSS'],
         url: 'https://benedict-taguinod.com',
         codeUrl: 'https://github.com/btaguinod/personal-website',
         imageLocation: ''
