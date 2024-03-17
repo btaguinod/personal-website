@@ -24,7 +24,7 @@ const cards = [
         stack: ['React', 'CSS'],
         url: 'https://libearium.tech/',
         codeUrl: 'https://github.com/shreystechtips/SmartQueue',
-        imageLocation: process.env.PUBLIC_URL + '/img/libearium.jpg'
+        imageLocation: '/img/libearium.jpg'
     },
     {
         title: 'Purple Politics',
@@ -32,7 +32,7 @@ const cards = [
         stack: ['Flask REST API', 'React', 'Python NLP', 'MongoDB', 'IBM Watson NLU API', 'Algolia API'],
         url: 'https://purplepoliticsevents.com',
         codeUrl: 'https://github.com/btaguinod/purple-politics',
-        imageLocation: process.env.PUBLIC_URL + '/img/purplepolitics.png'
+        imageLocation: '/img/purplepolitics.png'
     },
     {
         title: 'Personal Website',
@@ -47,7 +47,7 @@ const cards = [
 export default function ProjectCards() {
     return (
         <div id="project-cards">
-            {cards.map(card => 
+            {cards.map(card =>
                 <ProjectCard
                     key={card.title}
                     card={card}

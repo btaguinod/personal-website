@@ -1,8 +1,9 @@
 import React from 'react';
 import './SubPageTemplate.css';
 import { StlViewer } from "react-stl-viewer";
+import '../../index.css'
 
-export default function SubPage({title, description, cards}) {
+export default function SubPage({ title, description, cards }) {
   return (
     <div className="subpage page">
       <div className="subpage-title">
@@ -12,14 +13,14 @@ export default function SubPage({title, description, cards}) {
         <div className="subtext-2">{description}</div>
       </div>
       <div className="subpage-cards">
-        {cards.map((card, i) => <SubPageCard index={i} key={i} card={card}/>)}
+        {cards.map((card, i) => <SubPageCard index={i} key={i} card={card} />)}
       </div>
     </div>
   )
 }
 
 
-function SubPageCard({index, card}) {
+function SubPageCard({ index, card }) {
   let content;
   if (card.type === 'model') {
     content = (
