@@ -50,13 +50,16 @@
     font-weight: var(--semi-bold);
 }
 
-.course-skills, .course-projects, .course-website {
+.course-skills,
+.course-projects,
+.course-website {
     font-size: 16px;
     line-height: 18px;
     font-weight: var(--regular);
 }
 
-.course-school, .course-time {
+.course-school,
+.course-time {
     font-size: 16px;
     line-height: 18px;
     font-weight: var(--regular);

@@ -21,7 +21,7 @@
 .subpage-description .subtext-2 {
     line-height: 48px;
     text-align: center;
-    
+
     animation: none
 }
 
@@ -57,8 +57,8 @@
 
 .subpage-card-content canvas {
     /* override the inline html css */
-    height: 100%!important;
-    width: 100%!important;
+    height: 100% !important;
+    width: 100% !important;
 }
 
 .subpage-card-text {

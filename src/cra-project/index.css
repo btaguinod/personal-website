@@ -1,7 +1,5 @@
 :root {
     --highlight-1: #2AABE8;
-    --highlight-2: #E8CC2A;
-    --highlight-3: #E82A2A;
     --dark: #0E1212;
     --light: #DBDBDB;
     --subtext: #808080;
@@ -13,13 +11,14 @@
     --intro-first: 1.5s;
     --intro-second: 2s;
     --intro-third: 1s;
-    --intro-full: 
+    --intro-full:
         calc(var(--intro-first) + var(--intro-second) + var(--intro-third));
 
     --body-width: 1140px;
 }
 
-html, body {
+html,
+body {
     font-family: 'Cairo', sans-serif;
     margin: 0;
     color: var(--light);
@@ -37,11 +36,13 @@ a {
 body::-webkit-scrollbar {
     display: none;
 }
-  
+
 /* Hide scrollbar for IE, Edge and Firefox */
 body {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .highlight {
@@ -56,7 +57,7 @@ body {
     top: 1.4em;
     background-color: var(--highlight-1);
     width: 100%;
-    
+
     height: 0.1em;
     left: 0;
     right: 0;
@@ -119,8 +120,7 @@ body {
     font-weight: var(--semi-bold);
     line-height: 67px;
 
-    animation: subtext-intro var(--intro-third) ease 
-        calc(var(--intro-first) + var(--intro-second));
+    animation: subtext-intro var(--intro-third) ease calc(var(--intro-first) + var(--intro-second));
     animation-fill-mode: both;
 }
 
@@ -132,8 +132,7 @@ body {
     height: 5px;
     background-color: var(--highlight-1);
 
-    animation: bar-intro var(--intro-third) ease 
-        calc(var(--intro-first) + var(--intro-second));
+    animation: bar-intro var(--intro-third) ease calc(var(--intro-first) + var(--intro-second));
     animation-fill-mode: both;
 }
 
@@ -147,12 +146,12 @@ body {
         line-height: 78px;
         margin: 15px 0;
     }
-    
+
     .subtext-2 {
         line-height: 42px;
         margin: 15px 0;
     }
-    
+
     .subtext-1 {
         line-height: 42px;
         margin: 15px 0;
@@ -160,15 +159,21 @@ body {
 }
 
 @keyframes title-intro {
-    0% {opacity: 0;}
+    0% {
+        opacity: 0;
+    }
 }
 
 @keyframes subtext-intro {
-    0% {opacity: 0;}
+    0% {
+        opacity: 0;
+    }
 }
 
 @keyframes bar-intro {
-    0% {transform: scaleX(0)}
+    0% {
+        transform: scaleX(0)
+    }
 }
 
 @keyframes hide {
@@ -176,6 +181,7 @@ body {
         height: 0;
         min-height: 0;
     }
+
     100% {
         height: 0;
         min-height: 0;
