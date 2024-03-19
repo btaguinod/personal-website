@@ -1,8 +1,61 @@
 ---
-import { MainPage } from "../cra-project";
+import Header from "../cra-project/Header/Header";
+import About from "../cra-project/Pages/About/About";
+import Courses from "../cra-project/Pages/Courses/Courses";
+import Projects from "../cra-project/Pages/Projects/Projects";
+import SideLinks from "../cra-project/SideLinks/SideLinks";
 import Layout from "../layouts/Layout.astro";
+// TODO: activate page watch
+import faunadb from "faunadb";
 ---
 
-<Layout>
-	<MainPage client:load />
+<script>
+	// window.onload = async () => {
+	// const q = faunadb.query;
+	// const client = new faunadb.Client({
+	// secret: process.env.REACT_APP_DB_KEY,
+	// });
+	// const dbdocument = await client.query(
+	// q.Get(q.Match(q.Index('logs')))
+	// );
+	// const d = new Date();
+	// let time = d.toTimeString();
+	// await client.query(
+	// q.Update(dbdocument.ref, {
+	// 	data: {
+	// 	hits: dbdocument.data.hits + 1,
+	// 	times: [time].concat(dbdocument.data.times)
+	// 	},
+	// })
+	// );
+	// }
+</script>
+
+<Layout id="mainpage">
+	<Header client:load />
+	<SideLinks client:load />
+	<About client:load />
+	<Projects client:load />
+	<Courses client:load />
+	<div id="bar"></div>
 </Layout>
+
+<style>
+	@keyframes title-intro {
+		0% {
+			opacity: 0;
+		}
+	}
+
+	@keyframes subtext-intro {
+		0% {
+			opacity: 0;
+		}
+	}
+
+	@keyframes bar-intro {
+		0% {
+			transform: scaleX(0);
+		}
+	}
+</style>

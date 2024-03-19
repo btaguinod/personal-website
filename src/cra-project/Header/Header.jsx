@@ -11,15 +11,15 @@ export default class Header extends Component {
             linkInfo: [
                 {
                     content: 'About',
-                    href: '#about'
+                    href: '/#about'
                 },
                 {
                     content: 'Projects',
-                    href: '#projects'
+                    href: '/#projects'
                 },
                 {
                     content: 'Courses',
-                    href: '#courses'
+                    href: '/#courses'
                 }
             ]
         };
