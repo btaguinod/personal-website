@@ -1,4 +1,3 @@
-import React from 'react';
 import SubPage from '../SubPageTemplate';
 
 export default function GosperShells() {

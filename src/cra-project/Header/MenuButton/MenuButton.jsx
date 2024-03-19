@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import './MenuButton.css';
 
 export default class MenuButton extends Component {
@@ -12,7 +12,7 @@ export default class MenuButton extends Component {
                 <span />
                 <span />
                 <span />
-                <span />   
+                <span />
             </div>
         )
     }

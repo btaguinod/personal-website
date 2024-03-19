@@ -1,6 +1,5 @@
-import React from 'react';
-import './Courses.css';
 import CourseCards from './CourseCards';
+import './Courses.css';
 
 export default function Courses() {
     return (

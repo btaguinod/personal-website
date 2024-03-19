@@ -1,6 +1,5 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function ProjectCard(props) {
 
@@ -15,11 +14,11 @@ export default function ProjectCard(props) {
     }
 
     return (
-        <div className={"project-card" + (!props.card.imageLocation ? "no-image": "")}>
+        <div className={"project-card" + (!props.card.imageLocation ? "no-image" : "")}>
             {image}
             <div className="project-card-text">
                 <a href={props.card.url} className="project-card-title highlight">
-                        {props.card.title}
+                    {props.card.title}
                 </a>
                 <div className="project-card-desc">{props.card.desc}</div>
                 <div className="project-card-stack">

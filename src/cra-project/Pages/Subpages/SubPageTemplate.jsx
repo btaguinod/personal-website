@@ -1,7 +1,6 @@
-import React from 'react';
-import './SubPageTemplate.css';
 import { StlViewer } from "react-stl-viewer";
-import '../../index.css'
+import '../../index.css';
+import './SubPageTemplate.css';
 
 export default function SubPage({ title, description, cards }) {
   return (

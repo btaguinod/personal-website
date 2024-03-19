@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import MenuButton from './MenuButton/MenuButton';
+import { Component } from 'react';
 import SideLinks from '../SideLinks/SideLinks';
 import './Header.css';
+import MenuButton from './MenuButton/MenuButton';
 
 export default class Header extends Component {
     constructor(props) {
@@ -27,11 +27,11 @@ export default class Header extends Component {
 
     render() {
         let links =
-         this.state.linkInfo.map((info, index) => 
-            <a className="page-link" href={info.href} key={index}>
-                {info.content}
-            </a>
-        );
+            this.state.linkInfo.map((info, index) =>
+                <a className="page-link" href={info.href} key={index}>
+                    {info.content}
+                </a>
+            );
         return (
             <header>
                 <a id="name-link" href="#about">
@@ -39,8 +39,8 @@ export default class Header extends Component {
                 </a>
                 <MenuButton children={<div className="page-links" id="dropdown-links">{links}<SideLinks /></div>} />
                 <div className="page-links" id="main-links">{links}</div>
-                
-                
+
+
             </header>
         )
     }

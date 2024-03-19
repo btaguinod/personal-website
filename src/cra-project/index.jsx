@@ -1,9 +1,9 @@
-import './index.css';
-import Header from './Header/Header'
-import SideLinks from './SideLinks/SideLinks'
-import About from './Pages/About/About'
-import Projects from './Pages/Projects/Projects';
+import Header from './Header/Header';
+import About from './Pages/About/About';
 import Courses from './Pages/Courses/Courses';
+import Projects from './Pages/Projects/Projects';
+import SideLinks from './SideLinks/SideLinks';
+import './index.css';
 // TODO: activeate page watch
 // import faunadb from 'faunadb';
 

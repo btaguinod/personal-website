@@ -1,4 +1,3 @@
-import React from 'react';
 import CourseCard from './CourseCard';
 
 export default function CourseCards() {
@@ -48,7 +47,7 @@ const cards = [
     {
         title: 'CS 161',
         name: 'Computer Security',
-        skills: ['C', 'Go','Network Security', 'Web Security'],
+        skills: ['C', 'Go', 'Network Security', 'Web Security'],
         projects: [
             ['File Sharing System', 'https://proj2.cs161.org/']
         ],
@@ -61,8 +60,8 @@ const cards = [
         name: 'Machine Structures',
         skills: ['C', 'RISC-V', 'Computer Architecture'],
         projects: [
-            ['Philphix', 'https://cs61c.org/fa21/projects/proj1/'], 
-            ['CS61Classify', 'https://cs61c.org/fa21/projects/proj2/'], 
+            ['Philphix', 'https://cs61c.org/fa21/projects/proj1/'],
+            ['CS61Classify', 'https://cs61c.org/fa21/projects/proj2/'],
             ['Numc', 'https://cs61c.org/fa21/projects/proj4/']
         ],
         url: 'https://cs61c.org/fa21/',
@@ -125,7 +124,7 @@ const cards = [
         school: 'UC Berkeley',
         time: 'Spring 2021'
     },
-    
+
     {
         title: 'COMSC 200',
         name: 'Object Oriented Programming C++',
