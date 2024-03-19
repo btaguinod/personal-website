@@ -32,30 +32,10 @@ import faunadb from "faunadb";
 </script>
 
 <Layout id="mainpage">
-	<Header client:load />
-	<SideLinks client:load />
-	<About client:load />
-	<Projects client:load />
-	<Courses client:load />
+	<Header />
+	<SideLinks />
+	<About />
+	<Projects client:idle />
+	<Courses client:idle />
 	<div id="bar"></div>
 </Layout>
-
-<style>
-	@keyframes title-intro {
-		0% {
-			opacity: 0;
-		}
-	}
-
-	@keyframes subtext-intro {
-		0% {
-			opacity: 0;
-		}
-	}
-
-	@keyframes bar-intro {
-		0% {
-			transform: scaleX(0);
-		}
-	}
-</style>
