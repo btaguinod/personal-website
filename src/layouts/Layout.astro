@@ -1,6 +1,6 @@
 ---
 import { SEO } from "astro-seo";
-import "@fontsource-variable/cairo";
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 ---
 
 <!doctype html>
@@ -28,6 +28,9 @@ import "@fontsource-variable/cairo";
             content="A website showcasing my software work and experience."
         />
         <link rel="manifest" href="/manifest.json" />
+        <GoogleFontsOptimizer
+            url="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap"
+        />
     </head>
     <body>
         <slot />
@@ -56,8 +59,7 @@ import "@fontsource-variable/cairo";
 
             html,
             body {
-                font-display: auto;
-                font-family: "Cairo Variable", sans-serif;
+                font-family: "Cairo", sans-serif;
                 margin: 0;
                 color: var(--light);
                 font-weight: var(--regular);
