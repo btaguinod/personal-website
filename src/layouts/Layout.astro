@@ -6,6 +6,9 @@ import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 <!doctype html>
 <html lang="en">
     <head>
+        <GoogleFontsOptimizer
+            url="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=block"
+        />
         <SEO
             title="Benedict Taguinod"
             description="A website showcasing my software work and experience"
@@ -22,15 +25,12 @@ import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
         <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#0e1212" />
         <meta
             name="description"
             content="A website showcasing my software work and experience."
         />
         <link rel="manifest" href="/manifest.json" />
-        <GoogleFontsOptimizer
-            url="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap"
-        />
     </head>
     <body>
         <slot />
