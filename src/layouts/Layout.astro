@@ -1,13 +1,23 @@
 ---
 import { SEO } from "astro-seo";
-import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
-        <GoogleFontsOptimizer
-            url="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap"
+        <link
+            rel="preload"
+            href="/fonts/Cairo-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/fonts/Cairo-SemiBold.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
         />
         <SEO
             title="Benedict Taguinod"
@@ -35,6 +45,20 @@ import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
     <body>
         <slot />
         <style is:global>
+            @font-face {
+                font-family: "Cairo";
+                src: url("/fonts/Cairo-Regular.woff2") format("woff2");
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: "Cairo";
+                src: url("/fonts/Cairo-SemiBold.woff2") format("woff2");
+                font-weight: 600;
+                font-style: normal;
+                font-display: swap;
+            }
             :root {
                 --highlight-1: #2aabe8;
                 --dark: #0e1212;

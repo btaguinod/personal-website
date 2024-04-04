@@ -17,7 +17,6 @@
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "astro": "^4.5.5",
-    "astro-google-fonts-optimizer": "^0.2.2",
     "astro-seo": "^0.8.3",
     "faunadb": "^4.8.0",
     "react": "^18.2.0",
